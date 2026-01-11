@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import alias from '@rollup/plugin-alias'
 import markdown from 'vite-plugin-md'
 import Inspect from 'vite-plugin-inspect'
 import { resolve } from 'path'
@@ -12,7 +11,6 @@ const root = resolve(__dirname)
 const config: UserConfig = defineConfig({
   publicDir: 'assets',
   plugins: [
-    alias(),
     vue({
       include: [/\.vue$/, /\.md$/],
     }),
