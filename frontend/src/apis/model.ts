@@ -1,54 +1,54 @@
-export namespace model {
-  export class KeyBlockEntry {
-    id: number
-    record_start_offset: number
-    record_end_offset: number
-    keyword: string
-    key_block_idx: number
+export class KeyBlockEntry {
+  id: number
+  record_start_offset: number
+  record_end_offset: number
+  keyword: string
+  key_block_idx: number
 
-    static createFrom(source: any = {}) {
-      return new KeyBlockEntry(source)
-    }
-
-    constructor(source: any = {}) {
-      if ('string' === typeof source) source = JSON.parse(source)
-      this.id = source['id']
-      this.record_start_offset = source['record_start_offset']
-      this.record_end_offset = source['record_end_offset']
-      this.keyword = source['keyword']
-      this.key_block_idx = source['key_block_idx']
-    }
+  static createFrom(source: Record<string, unknown> = {}) {
+    return new KeyBlockEntry(source)
   }
-  export class PlainDictionaryItem {
-    id: string
-    name: string
-    path: string
 
-    static createFrom(source: any = {}) {
-      return new PlainDictionaryItem(source)
-    }
-
-    constructor(source: any = {}) {
-      if ('string' === typeof source) source = JSON.parse(source)
-      this.id = source['id']
-      this.name = source['name']
-      this.path = source['path']
-    }
+  constructor(source: Record<string, unknown> = {}) {
+    if ('string' === typeof source) source = JSON.parse(source)
+    this.id = source['id'] as number
+    this.record_start_offset = source['record_start_offset'] as number
+    this.record_end_offset = source['record_end_offset'] as number
+    this.keyword = source['keyword'] as string
+    this.key_block_idx = source['key_block_idx'] as number
   }
-  export class Resp {
-    data: any
-    err: string
-    code: number
+}
 
-    static createFrom(source: any = {}) {
-      return new Resp(source)
-    }
+export class PlainDictionaryItem {
+  id: string
+  name: string
+  path: string
 
-    constructor(source: any = {}) {
-      if ('string' === typeof source) source = JSON.parse(source)
-      this.data = source['data']
-      this.err = source['err']
-      this.code = source['code']
-    }
+  static createFrom(source: Record<string, unknown> = {}) {
+    return new PlainDictionaryItem(source)
+  }
+
+  constructor(source: Record<string, unknown> = {}) {
+    if ('string' === typeof source) source = JSON.parse(source)
+    this.id = source['id'] as string
+    this.name = source['name'] as string
+    this.path = source['path'] as string
+  }
+}
+
+export class Resp {
+  data: unknown
+  err: string
+  code: number
+
+  static createFrom(source: Record<string, unknown> = {}) {
+    return new Resp(source)
+  }
+
+  constructor(source: Record<string, unknown> = {}) {
+    if ('string' === typeof source) source = JSON.parse(source)
+    this.data = source['data']
+    this.err = source['err'] as string
+    this.code = source['code'] as number
   }
 }
