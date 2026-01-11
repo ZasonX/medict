@@ -74,6 +74,9 @@ typings/
 # vuepress build output
 .vuepress/dist
 
+# wails frontend generated files
+frontend/wailsjs/
+
 # Serverless directories
 .serverless/
 
