@@ -46,7 +46,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import AppHeader from '@/components/layout/AppHeader.vue'
 import MainSidebar from './MainSidebar.vue'
 // import MainRightToolbar from './MainRightToolbar.vue'

@@ -32,72 +32,64 @@
     </div>
   </div>
 </template>
-<script setup>
-import { ref, onMounted } from 'vue'
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import { NIcon } from 'naive-ui'
 import { Search, AngleLeft, AngleRight } from '@vicons/fa'
-import AppFunctions from '@/components/layout/AppFunctions.vue'
+// import AppFunctions from '@/components/layout/AppFunctions.vue'
 
 import { useDictQueryStore } from '@/store/dict'
 import { useUIStore } from '@/store/ui'
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
 
 const dictQueryStore = useDictQueryStore()
 const uiStore = useUIStore()
-const router = useRouter()
+// const router = useRouter()
 
 let inputWord = ref('')
-let inputActive = ref(false)
+// let inputActive = ref(false)
 
-function backHistory() {
-  dictQueryStore.backHistory()
-}
+// 1. 定義類型，Pinia 的 $onAction 回傳的是一個取消訂閱的函式
+let unsubscribe: (() => void) | null = null
 
-function forwardHistory() {
-  dictQueryStore.forwardHistory()
-}
-
-let storeChangeUnscribe = null
+/**
+ * 監聽 Store Action 並同步輸入框
+ */
 function listenInputWordUpdate() {
-  storeChangeUnscribe = dictQueryStore.$onAction(({ name, store, after }) => {
-    after((result) => {
-      switch (name) {
-        case 'updateInputSearchWord': {
-          // inputWord.value = dictQueryStore.inputSearchWord;
-          break
-        }
-        case 'forwardHistory': {
-          inputWord.value = dictQueryStore.inputSearchWord
-          break
-        }
-        case 'backHistory': {
-          inputWord.value = dictQueryStore.inputSearchWord
-          break
-        }
-      }
-    })
+  unsubscribe = dictQueryStore.$onAction(({ name, after }) => {
+    after(
+      () =>
+        ['forwardHistory', 'backHistory'].includes(name) &&
+        (inputWord.value = dictQueryStore.inputSearchWord)
+    )
   })
 }
 
+// 3. 事件處理函數（簡化為箭頭函式）
+const backHistory = () => dictQueryStore.backHistory()
+const forwardHistory = () => dictQueryStore.forwardHistory()
+
 onMounted(() => {
-  if (storeChangeUnscribe) {
-    storeChangeUnscribe()
-    storeChangeUnscribe = null
-  }
   listenInputWordUpdate()
+})
+
+onUnmounted(() => {
+  unsubscribe?.()
 })
 
 ///----------------------------
 // event listener function
 ///----------------------------
 
-function handleChange(v) {
+function handleChange() {
   console.info('[app-event](keydown.enter), args:' + inputWord.value)
+
   if (!uiStore.isSearchInputActive()) {
     console.log('[app-event](keydown.enter), input disabled, skipped')
     return
   }
-  let word = inputWord.value.trim()
+
+  const word = inputWord.value.trim()
 
   dictQueryStore.updateInputSearchWord(word)
   dictQueryStore.searchWord(word)

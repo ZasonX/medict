@@ -27,9 +27,22 @@
     "paths": {
       "@/*": ["src/*"],
       "$/*": ["wailsjs/*"]
-    }
+    },
+
+    // 讓 TS 認識 Vue 的關鍵插件設定
+    "plugins": [
+      {
+        "name": "@vue/language-plugin-vue"
+      }
+    ]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "wailsjs/**/*"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "wailsjs/**/*"
+  ],
   "exclude": ["node_modules", "dist"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -31,7 +31,7 @@
     </ul>
   </AppSidebar>
 </template>
-<script setup>
+<script setup lang="ts">
 import AppSidebar from '@/components/layout/AppSidebar.vue'
 
 import { useDictQueryStore } from '@/store/dict'
