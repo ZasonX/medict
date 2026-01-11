@@ -1,20 +1,20 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import alias from '@rollup/plugin-alias'
-
 import markdown from 'vite-plugin-md'
 import Inspect from 'vite-plugin-inspect'
 import { resolve } from 'path'
+import type { UserConfig } from 'vite'
 
 const root = resolve(__dirname)
 
 // https://vitejs.dev/config/
-export default defineConfig({
+const config: UserConfig = defineConfig({
   publicDir: 'assets',
   plugins: [
     alias(),
     vue({
-      include: [/\.vue$/, /\.md$/], // <--
+      include: [/\.vue$/, /\.md$/],
     }),
     markdown(),
     Inspect(),
@@ -22,7 +22,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(root, 'src'),
-      $: resolve(root, 'wailsjs'),
+      '$': resolve(root, 'wailsjs'),
       vue: 'vue/dist/vue.esm-bundler.js',
     },
   },
@@ -36,3 +36,5 @@ export default defineConfig({
     outDir: 'dist',
   },
 })
+
+export default config
