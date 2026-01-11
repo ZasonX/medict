@@ -61,30 +61,32 @@
 </template>
 
 <script lang="ts" setup>
-import { Bug, Coffee } from '@vicons/fa'
-import { NIcon } from 'naive-ui'
 import { BrowserOpenURL } from '$/runtime/runtime'
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
 
-const router = useRouter()
+// const router = useRouter()
 
-function onClickHyperLink(event: any) {
-  if (event && event.target) {
-    if (event.target.dataset && event.target.dataset.href) {
-      BrowserOpenURL(event.target.dataset.href)
-    }
+function onClickHyperLink(event: MouseEvent) {
+  const target = event.currentTarget as HTMLElement // 比 event.target 更安全
+  const href = target.dataset.href
+
+  if (href) {
+    BrowserOpenURL(href)
   }
+
   console.log(event)
 }
-function onClickInternalLink(event: any) {
-  if (event && event.target) {
-    if (event.target.dataset && event.target.dataset.href) {
-      console.log('replace router, path', event.target.dataset.href)
-      router.replace({ path: event.target.dataset.href })
-    }
-  }
-  console.log(event)
-}
+
+// defined but never used.
+// function onClickInternalLink(event: any) {
+//   if (event && event.target) {
+//     if (event.target.dataset && event.target.dataset.href) {
+//       console.log('replace router, path', event.target.dataset.href)
+//       router.replace({ path: event.target.dataset.href })
+//     }
+//   }
+//   console.log(event)
+// }
 </script>
 
 <style lang="scss" scoped>
