@@ -2,13 +2,13 @@ package stardict
 
 import (
 	"encoding/json"
-	"github.com/terasum/medict/pkg/model"
-	"github.com/terasum/medict/pkg/service"
 	"testing"
+
+	"github.com/terasum/medict/pkg/model"
 )
 
 func TestStarDict_Lookup(t *testing.T) {
-	dict, err := service.NewByDirItem(&model.DirItem{
+	dict, err := NewStardict(&model.DirItem{
 		BaseDir:            "",
 		CurrentDir:         "",
 		IsValid:            false,
@@ -29,13 +29,13 @@ func TestStarDict_Lookup(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	err = dict.MainDict.BuildIndex()
+	err = dict.BuildIndex()
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Logf("%+v", dict.ToPlain())
-	t.Logf("%+v", dict.Name)
-	words, err := dict.MainDict.Search("impair")
+	t.Logf("%+v", dict.Description())
+	t.Logf("%+v", dict.Name())
+	words, err := dict.Search("impair")
 	if err != nil {
 		t.Fatal(err)
 	}

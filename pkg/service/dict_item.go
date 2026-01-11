@@ -19,11 +19,12 @@ package service
 import (
 	"encoding/base64"
 	"errors"
+	"os"
+
 	"github.com/terasum/medict/internal/utils"
 	"github.com/terasum/medict/pkg/model"
 	"github.com/terasum/medict/pkg/service/mdict"
 	"github.com/terasum/medict/pkg/service/stardict"
-	"os"
 )
 
 func NewByDirItem(dirItem *model.DirItem) (*model.DictionaryItem, error) {
@@ -59,21 +60,22 @@ func NewByDirItem(dirItem *model.DirItem) (*model.DictionaryItem, error) {
 		log.Infof("read license file %s\n", dirItem.LicensePath)
 	}
 
-	if dirItem.DictType == model.DictTypeMdict {
+	switch dirItem.DictType {
+	case model.DictTypeMdict:
 		dict, err := mdict.NewMdictSvc(dirItem)
 		if err != nil {
 			return nil, err
 		}
 		dictItem.MainDict = dict
 		dictItem.Name = dict.Name()
-	} else if dirItem.DictType == model.DictTypeStarDict {
+	case model.DictTypeStarDict:
 		dict, err := stardict.NewStardict(dirItem)
 		if err != nil {
 			return nil, err
 		}
 		dictItem.Name = dict.Name()
 		dictItem.MainDict = dict
-	} else {
+	default:
 		return nil, errors.New("not recognized dictionary type")
 	}
 
