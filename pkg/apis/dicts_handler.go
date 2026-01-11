@@ -2,17 +2,18 @@ package apis
 
 import (
 	"errors"
+
 	"github.com/terasum/medict/pkg/model"
 )
 
 // GetAllDicts
-func (dc *DictsController) GetAllDicts(args map[string]interface{}) *model.Resp {
+func (dc *DictsController) GetAllDicts(args map[string]any) *model.Resp {
 	dicts := dc.ds.Dicts()
 	return model.BuildSuccess(dicts)
 }
 
 // InitDicts 初始化词典
-func (dc *DictsController) InitDicts(args map[string]interface{}) *model.Resp {
+func (dc *DictsController) InitDicts(args map[string]any) *model.Resp {
 	err := dc.ds.InitDicts()
 	if err != nil {
 		return model.BuildError(err, model.InnerSysErrCode)
@@ -21,7 +22,7 @@ func (dc *DictsController) InitDicts(args map[string]interface{}) *model.Resp {
 }
 
 // buildIndex
-func (dc *DictsController) BuildIndexByDictId(args map[string]interface{}) *model.Resp {
+func (dc *DictsController) BuildIndexByDictId(args map[string]any) *model.Resp {
 	if id, ok := args["dictid"]; !ok {
 		return model.BuildError(errors.New("build index failed, dictid is empty"), model.InnerSysErrCode)
 	} else {
@@ -39,7 +40,7 @@ func (dc *DictsController) BuildIndexByDictId(args map[string]interface{}) *mode
 }
 
 // SearchWord
-func (dc *DictsController) SearchWord(args map[string]interface{}) *model.Resp {
+func (dc *DictsController) SearchWord(args map[string]any) *model.Resp {
 	dictId, ok := args["dict_id"]
 	if !ok {
 		return model.BuildError(errors.New("dict_id not found"), model.BadParamErrCode)
