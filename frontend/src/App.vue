@@ -83,54 +83,31 @@ const themeOverrides: GlobalThemeOverrides = {
   },
 }
 
-function listenStoreChange(store: any) {
-  const unscribe = store.$onAction(
-    ({
-      name, // action 名称
-      store, // store 实例，类似 `someStore`
-      args, // 传递给 action 的参数数组
-      after, // 在 action 返回或解决后的钩子
-      onError, // action 抛出或拒绝的钩子
-    }) => {
-      const startTime = Date.now()
-      console.debug(
-        `[store-action] {${name}} triggered started, args: {${args}}`
-      )
+const dictQueryStore = useDictQueryStore()
 
-      // 这将在 action 成功并完全运行后触发。
-      // 它等待着任何返回的 promise
+onMounted(() => {
+  const unscribe = dictQueryStore.$onAction(
+    ({ name, args, after, onError }) => {
+      const startTime = Date.now()
+      console.debug(`[store-action] {${name}} started, args:`, args)
+
       after((result) => {
         console.debug(
-          `[store-action] {${name}} triggered success, after ${
-            Date.now() - startTime
-          }ms, with result ${result}.`
+          `[store-action] {${name}} success after ${Date.now() - startTime}ms, result:`,
+          result
         )
       })
 
-      // 如果 action 抛出或返回一个拒绝的 promise，这将触发
       onError((error) => {
         console.warn(
-          `[store-action] {${name}} trigger faild, after ${
-            Date.now() - startTime
-          }ms.\nerror: ${error}.`
+          `[store-action] {${name}} failed after ${Date.now() - startTime}ms, error:`,
+          error
         )
       })
     }
   )
-  return unscribe
-}
 
-let unscribeDictQueryStore = null
-const dictQueryStore = useDictQueryStore()
-onMounted(() => {
-  unscribeDictQueryStore = listenStoreChange(dictQueryStore)
-})
-
-onUnmounted(() => {
-  if (unscribeDictQueryStore) {
-    unscribeDictQueryStore()
-    unscribeDictQueryStore = null
-  }
+  onUnmounted(unscribe)
 })
 </script>
 
