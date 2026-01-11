@@ -50,10 +50,10 @@ func (mdict *MdictBase) readDictHeader() error {
 
 	// Handle encryption flag
 	encrypted := headerInfo.Encrypted
-	switch {
-	case encrypted == "" || encrypted == "No":
+	switch encrypted {
+	case "", "No":
 		meta.encryptType = EncryptNoEnc
-	case encrypted == "Yes":
+	case "Yes":
 		meta.encryptType = EncryptRecordEnc
 	default:
 		if encrypted[0] == '2' {
