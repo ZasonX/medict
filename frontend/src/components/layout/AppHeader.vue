@@ -17,26 +17,26 @@
 -->
 
 <template>
-  <div class="app-header" id="app-header">
+  <div id="app-header" class="app-header">
     <div class="app-header-logo">
       <div class="logo">
         <h1>Medict</h1>
       </div>
     </div>
     <div class="app-header-func-box">
-    <div class="app-header-func-solt">
-        <slot></slot>
-    </div>
+      <div class="app-header-func-solt">
+        <slot />
+      </div>
 
-    <div class="app-header-func-nav">
-    <AppFunctions />
-    </div>
+      <div class="app-header-func-nav">
+        <AppFunctions />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import AppFunctions from './AppFunctions.vue';
+import AppFunctions from './AppFunctions.vue'
 </script>
 
 <style lang="scss" scoped>
@@ -58,8 +58,7 @@ import AppFunctions from './AppFunctions.vue';
 
   justify-content: space-between;
   height: $layout-header-height;
-  max-height:$layout-header-height;
-
+  max-height: $layout-header-height;
 
   .app-header-logo {
     display: flex;
@@ -81,11 +80,11 @@ import AppFunctions from './AppFunctions.vue';
       }
     }
   }
-  .app-header-func-box{
+  .app-header-func-box {
     display: flex;
     justify-content: space-between;
     width: calc(100% - 120px);
-    .app-header-func-solt{
+    .app-header-func-solt {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -97,7 +96,7 @@ import AppFunctions from './AppFunctions.vue';
       min-width: 174px;
       margin-left: 40px;
     }
-    .app-header-func-nav{
+    .app-header-func-nav {
     }
   }
 }

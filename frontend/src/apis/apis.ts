@@ -16,29 +16,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Dispatch, ResourceServerAddr, OpenFinder, BaseDictDir } from '../../wailsjs/go/main/App';
+import {
+  Dispatch,
+  ResourceServerAddr,
+  OpenFinder,
+  BaseDictDir,
+} from '../../wailsjs/go/main/App'
 
-import { model } from '../../wailsjs/go/models';
+import { model } from '../../wailsjs/go/models'
 
 function objectToPathParams(obj) {
-  const params = [];
+  const params = []
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
-      params.push(`${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`);
+      params.push(`${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)
     }
   }
-  return params.join('&');
+  return params.join('&')
 }
 
 export const StaticDictServerURL = function (): Promise<string> {
   if (window['go']) {
-    return ResourceServerAddr();
+    return ResourceServerAddr()
   } else {
-    Promise.resolve("http://localhost:1")
+    Promise.resolve('http://localhost:1')
   }
-};
+}
 
-export const OpenDirOrFile = function(filepath :string):Promise<void>{
+export const OpenDirOrFile = function (filepath: string): Promise<void> {
   if (window['go']) {
     return OpenFinder(filepath)
   } else {
@@ -46,26 +51,26 @@ export const OpenDirOrFile = function(filepath :string):Promise<void>{
   }
 }
 
-export const BaseDictDirectory = function():Promise<string>{
+export const BaseDictDirectory = function (): Promise<string> {
   if (window['go']) {
     return BaseDictDir()
   } else {
-    Promise.resolve("internal error")
+    Promise.resolve('internal error')
   }
 }
 
-
-
 export async function requestBackend(apiName, data): Promise<model.Resp> {
   if (window['go']) {
-    console.log(`[dicts-api] ipc call, dispatch [${apiName}] event, args:`, data)
-    return Dispatch(apiName, data);
+    console.log(
+      `[dicts-api] ipc call, dispatch [${apiName}] event, args:`,
+      data
+    )
+    return Dispatch(apiName, data)
   } else {
     return Promise.resolve({
-      data:"",
-      err: "browser not support or system not initialzd yet",
+      data: '',
+      err: 'browser not support or system not initialzd yet',
       code: 500,
     })
-
   }
 }

@@ -7,7 +7,7 @@
   -webkit-user-drag: text;
   -webkit-user-select: none;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
@@ -36,7 +36,12 @@ hr {
 }
 
 // Typography
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 20px;
   margin-bottom: 10px;
   font-weight: 500;
@@ -45,12 +50,24 @@ h1, h2, h3, h4, h5, h6 {
   text-overflow: ellipsis;
 }
 
-h1 { font-size: 36px; }
-h2 { font-size: 30px; }
-h3 { font-size: 24px; }
-h4 { font-size: 18px; }
-h5 { font-size: 14px; }
-h6 { font-size: 12px; }
+h1 {
+  font-size: 36px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 14px;
+}
+h6 {
+  font-size: 12px;
+}
 
 // Basic app structure
 .window {
@@ -59,7 +76,7 @@ h6 { font-size: 12px; }
   right: 0;
   bottom: 0;
   left: 0;
-	display: flex;
+  display: flex;
   flex-direction: column;
   background-color: $chrome-color;
 }
@@ -67,6 +84,6 @@ h6 { font-size: 12px; }
 .window-content {
   position: relative;
   overflow-y: auto;
-	display: flex;
+  display: flex;
   flex: 1;
 }

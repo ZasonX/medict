@@ -3,22 +3,22 @@
     <div class="setting-item">
       <div class="setting-item-label">
         <span class="setting-item-title">{{ title }}</span>
-        <span class="setting-item-desc"><slot name="desc"></slot> </span>
+        <span class="setting-item-desc"><slot name="desc" /> </span>
       </div>
 
       <span class="setting-item-action">
-        <slot name="action"></slot>
+        <slot name="action" />
       </span>
     </div>
     <div class="setting-item-content">
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps } from 'vue'
 
-defineProps(['title', 'value']);
+defineProps(['title', 'value'])
 </script>
 <style lang="scss" scoped>
 .setting-group {

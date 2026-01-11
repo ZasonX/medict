@@ -17,22 +17,24 @@
 -->
 
 <template>
-  <div class="app-footer" id="app-footer">
-
+  <div id="app-footer" class="app-footer">
     <span class="hyperlink">
-        <b data-href="https://github.com/terasum/medict"
-        @click="onClickHyperLink">
-         <span class="icon icon-github"></span>
-        Github</b>
+      <b
+        data-href="https://github.com/terasum/medict"
+        @click="onClickHyperLink"
+      >
+        <span class="icon icon-github" />
+        Github</b
+      >
     </span>
 
-    <span class="split-line"></span>
+    <span class="split-line" />
     <span class="hyperlink">
       <b
         data-href="https://github.com/terasum/medict/issues"
         @click="onClickHyperLink"
-        >
-         <span class="icon icon-help-circled"></span>
+      >
+        <span class="icon icon-help-circled" />
         问题反馈</b
       >
     </span>
@@ -52,36 +54,36 @@
       </b>
     </span> -->
 
-    <span class="split-line"></span>
+    <span class="split-line" />
 
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { Bug, Coffee } from '@vicons/fa';
-import { NIcon } from 'naive-ui';
-import { BrowserOpenURL } from '../../../wailsjs/runtime/runtime';
-import { useRouter } from 'vue-router';
+import { Bug, Coffee } from '@vicons/fa'
+import { NIcon } from 'naive-ui'
+import { BrowserOpenURL } from '../../../wailsjs/runtime/runtime'
+import { useRouter } from 'vue-router'
 
-const router = useRouter();
+const router = useRouter()
 
 function onClickHyperLink(event: any) {
   if (event && event.target) {
     if (event.target.dataset && event.target.dataset.href) {
-      BrowserOpenURL(event.target.dataset.href);
+      BrowserOpenURL(event.target.dataset.href)
     }
   }
-  console.log(event);
+  console.log(event)
 }
 function onClickInternalLink(event: any) {
   if (event && event.target) {
     if (event.target.dataset && event.target.dataset.href) {
-      console.log('replace router, path', event.target.dataset.href);
-      router.replace({ path: event.target.dataset.href });
+      console.log('replace router, path', event.target.dataset.href)
+      router.replace({ path: event.target.dataset.href })
     }
   }
-  console.log(event);
+  console.log(event)
 }
 </script>
 
@@ -90,7 +92,6 @@ function onClickInternalLink(event: any) {
 @import '@/style/photon/photon.scss';
 
 .app-footer {
-
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -110,7 +111,7 @@ function onClickInternalLink(event: any) {
   span.hyperlink {
     // padding-left: 5px;
     // padding-right: 5px;
-    
+
     & > b {
       margin: 0;
       padding: 0;
@@ -125,7 +126,7 @@ function onClickInternalLink(event: any) {
       color: #333;
     }
   }
-  
+
   span.split-line {
     &::before {
       content: '|';

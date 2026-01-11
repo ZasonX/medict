@@ -16,7 +16,7 @@
 
     // Bring the "active" button to the front
     &:focus,
-    &:active{
+    &:active {
       z-index: 2;
     }
 

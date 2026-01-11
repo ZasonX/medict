@@ -17,187 +17,187 @@
 -->
 
 <template>
-    <div class="x-space">
-      <div class="x-layout">
-        <div class="x-layout-header">
-            <AppHeader/>
+  <div class="x-space">
+    <div class="x-layout">
+      <div class="x-layout-header">
+        <AppHeader />
       </div>
-        <div class="x-layout-main-area">
-          <div class="x-layout-sidebar">
-            <AppSidebar>
-              <div class="dict-groups">
-                <div class="dict-group-list">
-                  <nav class="nav-group">
-                    <h5 class="nav-group-title">调试功能</h5>
-                    <router-link to="/debug/resource-search" class="nav-group-item">
-                      <span class="icon icon-search"></span>
-                      资源查询
-                    </router-link>
-                
-                    <router-link to="/debug/edit-dict" class="nav-group-item">
-                      <span class="icon icon-pencil"></span>
-                      词条修改
-                    </router-link>
-                  </nav>
-                </div>
+      <div class="x-layout-main-area">
+        <div class="x-layout-sidebar">
+          <AppSidebar>
+            <div class="dict-groups">
+              <div class="dict-group-list">
+                <nav class="nav-group">
+                  <h5 class="nav-group-title">调试功能</h5>
+                  <router-link
+                    to="/debug/resource-search"
+                    class="nav-group-item"
+                  >
+                    <span class="icon icon-search" />
+                    资源查询
+                  </router-link>
+
+                  <router-link to="/debug/edit-dict" class="nav-group-item">
+                    <span class="icon icon-pencil" />
+                    词条修改
+                  </router-link>
+                </nav>
               </div>
-            </AppSidebar>
-          </div>
-          <div class="x-layout-content">
-            <AppMainContent>
-                <router-view/>
-            </AppMainContent>
-          </div>
+            </div>
+          </AppSidebar>
         </div>
-        <div class="n-layout-footer">
-          <AppFooter>
-            <span class="dicts-hint">
-              当前组拥有词典数: {{ dictsList.length }}
-            </span>
-          </AppFooter>
+        <div class="x-layout-content">
+          <AppMainContent>
+            <router-view />
+          </AppMainContent>
         </div>
+      </div>
+      <div class="n-layout-footer">
+        <AppFooter>
+          <span class="dicts-hint">
+            当前组拥有词典数: {{ dictsList.length }}
+          </span>
+        </AppFooter>
       </div>
     </div>
-  </template>
-  
-  <script setup>
-  import AppSidebar from '../../components/layout/AppSidebar.vue';
-  import AppFooter from '../../components/layout/AppFooter.vue';
-  import AppFunctions from '../../components/layout/AppFunctions.vue';
-  import AppHeader from '@/components/layout/AppHeader.vue';
-  import AppMainContent from '../../components/layout/AppMainContent.vue';
-  import AppRightToolbar from '@/components/layout/AppRightToolbar.vue';
-  
-  import { NIcon, NButton, NButtonGroup } from 'naive-ui';
-  import { useUIStore } from '@/store/ui';
-  import { useDictQueryStore } from '@/store/dict';
-  import { GetAllDicts } from '@/apis/dicts-api';
-  import {LemonRegular} from "@vicons/fa"
-  
-  import { ref, onMounted } from 'vue';
-  
-  const dictsList = ref([]);
-  
-  const dictQueryStore = useDictQueryStore();
-  const uiStore = useUIStore();
-  uiStore.updateCurrentTab('debug');
-  
-  onMounted(() => {
-    GetAllDicts()
-      .then((res) => {
-        console.log(res);
-        dictsList.value = [];
-        res.forEach((dict) => {
-          console.log(dict);
-          dictsList.value.push({
-            name: dict.name,
-            dict_type: dict.type,
-            title: dict.description.title,
-            desc: dict.description.description,
-            generateEngineVersion: dict.description.generateEngineVersion,
-            createDate: dict.description.createDate,
-            id: dict.id,
-            base_dir: dict.base_dir,
-          });
-        });
-        console.log(dictsList.value);
+  </div>
+</template>
+
+<script setup>
+import AppSidebar from '../../components/layout/AppSidebar.vue'
+import AppFooter from '../../components/layout/AppFooter.vue'
+import AppFunctions from '../../components/layout/AppFunctions.vue'
+import AppHeader from '@/components/layout/AppHeader.vue'
+import AppMainContent from '../../components/layout/AppMainContent.vue'
+import AppRightToolbar from '@/components/layout/AppRightToolbar.vue'
+
+import { NIcon, NButton, NButtonGroup } from 'naive-ui'
+import { useUIStore } from '@/store/ui'
+import { useDictQueryStore } from '@/store/dict'
+import { GetAllDicts } from '@/apis/dicts-api'
+import { LemonRegular } from '@vicons/fa'
+
+import { ref, onMounted } from 'vue'
+
+const dictsList = ref([])
+
+const dictQueryStore = useDictQueryStore()
+const uiStore = useUIStore()
+uiStore.updateCurrentTab('debug')
+
+onMounted(() => {
+  GetAllDicts()
+    .then((res) => {
+      console.log(res)
+      dictsList.value = []
+      res.forEach((dict) => {
+        console.log(dict)
+        dictsList.value.push({
+          name: dict.name,
+          dict_type: dict.type,
+          title: dict.description.title,
+          desc: dict.description.description,
+          generateEngineVersion: dict.description.generateEngineVersion,
+          createDate: dict.description.createDate,
+          id: dict.id,
+          base_dir: dict.base_dir,
+        })
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
-  </script>
-  
-  <style lang="scss" scoped>
-  @import '@/style/variables.scss';
-  @import '@/style/photon/photon.scss';
-  
-  .x-space {
+      console.log(dictsList.value)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+})
+</script>
+
+<style lang="scss" scoped>
+@import '@/style/variables.scss';
+@import '@/style/photon/photon.scss';
+
+.x-space {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+
+  .x-layout {
     width: 100%;
     height: 100%;
     padding: 0;
     margin: 0;
-  
-    .x-layout {
+    .x-layout-main-area {
+      display: flex;
+      flex-direction: row;
       width: 100%;
-      height: 100%;
+      height: calc(100% - $layout-footer-height);
       padding: 0;
       margin: 0;
-      .x-layout-main-area {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        height: calc(100% - $layout-footer-height);
+      margin-right: -60px;
+
+      .x-layout-sidebar {
+        width: $layout-left-sidebar-width;
+        height: 100%;
         padding: 0;
         margin: 0;
-        margin-right: -60px;
-  
-        .x-layout-sidebar {
-          width: $layout-left-sidebar-width;
-          height: 100%;
-          padding: 0;
-          margin: 0;
-          background-color: #fafafa;
-        }
-  
-        .x-layout-content {
-          width: calc(
-            100% - $layout-left-sidebar-width 
-          );
-          height: 100%;
-          padding: 0;
-          margin: 0;
-        }
-  
-        .x-layout-right-toolbar {
-          width: $layout-right-toolbar-width;
-        }
+        background-color: #fafafa;
       }
-      .n-layout-footer {
-        width: 100%;
-        height: $layout-footer-height;
+
+      .x-layout-content {
+        width: calc(100% - $layout-left-sidebar-width);
+        height: 100%;
         padding: 0;
         margin: 0;
+      }
+
+      .x-layout-right-toolbar {
+        width: $layout-right-toolbar-width;
       }
     }
+    .n-layout-footer {
+      width: 100%;
+      height: $layout-footer-height;
+      padding: 0;
+      margin: 0;
+    }
   }
-  
-  .dict-groups {
-    height: 100%;
+}
+
+.dict-groups {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  .dict-group-list {
+    height: calc(100% - 30px);
+    overflow: auto;
+  }
+  .dict-group-settings {
+    height: 30px;
     display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    .dict-group-list {
-      height: calc(100% - 30px);
-      overflow: auto;
-    }
-    .dict-group-settings {
-      height: 30px;
-      display: flex;
-      justify-content: center;
-      flex-direction: row;
-      background-color: #ededed;
-      border-top: 1px solid #ccc;
-      .btn-group {
-        margin-top: 3px;
-      }
+    justify-content: center;
+    flex-direction: row;
+    background-color: #ededed;
+    border-top: 1px solid #ccc;
+    .btn-group {
+      margin-top: 3px;
     }
   }
-  
-  .dict-main-area {
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 20px;
-  }
-  .dict-toolbar {
-    background-color: #fafafa;
-    height: 100%;
-    width: 100%;
-  }
-  .dicts-hint{
-    font-size: 12px;
-    height: 20px;
-    line-height: 20px;
-  }
-  </style>
-  
+}
+
+.dict-main-area {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+.dict-toolbar {
+  background-color: #fafafa;
+  height: 100%;
+  width: 100%;
+}
+.dicts-hint {
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+}
+</style>

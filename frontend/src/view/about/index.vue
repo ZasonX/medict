@@ -16,10 +16,97 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
+<template>
+  <div class="container about-view">
+    <div class="about-title">
+      <!-- <h1>About</h1> -->
+    </div>
+    <div class="about-body">
+      <section class="about-section">
+        <div class="section-title">
+          <h2>
+            <NIcon><Code /></NIcon> 软件信息
+          </h2>
+        </div>
+        <div class="section-body">
+          <div class="input-group">
+            <div class="input-info">
+              <label>软件简介</label>
+              <p>Medict, 现代跨平台词典App</p>
+            </div>
+            <div class="input-container">
+              <button
+                class="btn btn-default"
+                @click="openExternal('https://github.com/terasum/medict')"
+              >
+                <span class="icon icon-github" />&nbsp;github
+              </button>
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="input-info">
+              <label>软件版本</label>
+              <p>v3.0.1-alpha</p>
+            </div>
+            <div class="input-container" />
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <div class="section-title">
+          <h2>
+            <NIcon><PeopleCarry /></NIcon> 致谢
+          </h2>
+        </div>
+        <div class="section-body">
+          <div class="input-group">
+            <div class="input-info">
+              <label>开发人员</label>
+              <p>
+                <a
+                  href="javascript:void(0);"
+                  @click="openExternal('https://github.com/terasum')"
+                  >Chen, Quan</a
+                >
+              </p>
+            </div>
+            <div class="input-container" />
+          </div>
+
+          <div class="input-group">
+            <div class="input-info">
+              <label>设计人员</label>
+              <p>Zhang, Mingjiao</p>
+            </div>
+            <div class="input-container" />
+          </div>
+          <div class="input-group">
+            <div class="input-info">
+              <label>特别鸣谢</label>
+              <p>Song, Xing</p>
+            </div>
+            <div class="input-container" />
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { BrowserOpenURL } from '../../../wailsjs/runtime/runtime'
+import { Code, PeopleCarry } from '@vicons/fa'
+import { NIcon } from 'naive-ui'
+
+function openExternal(url: string) {
+  BrowserOpenURL(url)
+}
+</script>
+
 <style lang="scss" scoped>
 @import '@/style/variables.scss';
 @import '@/style/photon/photon.scss';
-
 
 .about-view {
   height: 100%;
@@ -27,11 +114,9 @@
   padding: 15px 10px;
   .about-title {
   }
-.about-body {
-  min-height: 260px;
-}
-
-
+  .about-body {
+    min-height: 260px;
+  }
 }
 
 .about-section {
@@ -112,93 +197,4 @@
 //     background-image: none;
 //   }
 // }
-
 </style>
-
-<template>
-  <div class="container about-view">
-    <div class="about-title">
-      <!-- <h1>About</h1> -->
-    </div>
-    <div class="about-body">
-      <section class="about-section">
-        <div class="section-title">
-          <h2>
-            <NIcon><Code /></NIcon> 软件信息
-          </h2>
-        </div>
-        <div class="section-body">
-          <div class="input-group">
-            <div class="input-info">
-              <label>软件简介</label>
-              <p>Medict, 现代跨平台词典App</p>
-            </div>
-            <div class="input-container">
-              <button
-                class="btn btn-default"
-                @click="openExternal('https://github.com/terasum/medict')"
-              >
-              <span class="icon icon-github"></span>&nbsp;github
-              </button>
-            </div>
-          </div>
-          <div class="input-group">
-            <div class="input-info">
-              <label>软件版本</label>
-              <p>v3.0.1-alpha</p>
-            </div>
-            <div class="input-container"></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="about-section">
-        <div class="section-title">
-          <h2>
-            <NIcon><PeopleCarry /></NIcon> 致谢
-          </h2>
-        </div>
-        <div class="section-body">
-          <div class="input-group">
-            <div class="input-info">
-              <label>开发人员</label>
-              <p>
-                <a
-                  href="javascript:void(0);"
-                  @click="openExternal('https://github.com/terasum')"
-                  >Chen, Quan</a
-                >
-              </p>
-            </div>
-            <div class="input-container"></div>
-          </div>
-
-          <div class="input-group">
-            <div class="input-info">
-              <label>设计人员</label>
-              <p>Zhang, Mingjiao</p>
-            </div>
-            <div class="input-container"></div>
-          </div>
-          <div class="input-group">
-            <div class="input-info">
-              <label>特别鸣谢</label>
-              <p>Song, Xing</p>
-            </div>
-            <div class="input-container"></div>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
-</template>
-
-<script lang="ts" setup>
-import { BrowserOpenURL } from '../../../wailsjs/runtime/runtime';
-import { Code, PeopleCarry } from '@vicons/fa';
-import { NIcon } from 'naive-ui';
-
-function openExternal(url: string) {
-  BrowserOpenURL(url);
-}
-</script>

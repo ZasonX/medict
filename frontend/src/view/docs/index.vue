@@ -20,7 +20,7 @@
   <div class="x-space">
     <div class="x-layout">
       <div class="x-layout-header">
-            <AppHeader/>
+        <AppHeader />
       </div>
       <div class="x-layout-main-area">
         <div class="x-layout-sidebar">
@@ -32,7 +32,7 @@
                 :class="currentMenu === 0 ? 'active' : ''"
                 @click="onClickMenu(0)"
               >
-              <span class="icon icon-window"></span>
+                <span class="icon icon-window" />
                 界面介绍
               </span>
               <span
@@ -40,89 +40,80 @@
                 :class="currentMenu === 1 ? 'active' : ''"
                 @click="onClickMenu(1)"
               >
-              <span class="icon icon-book"></span>
+                <span class="icon icon-book" />
                 词典配置
               </span>
-
             </div>
             <nav class="nav-group">
-                  <h5 class="nav-group-title">常见问题</h5>
+              <h5 class="nav-group-title">常见问题</h5>
               <span
                 class="nav-group-item"
                 :class="currentMenu === 2 ? 'active' : ''"
                 @click="onClickMenu(2)"
               >
-              <span class="icon icon-help-circled"></span>
-              常见问题
+                <span class="icon icon-help-circled" />
+                常见问题
               </span>
-
-                  </nav>
+            </nav>
           </AppSidebar>
         </div>
         <div class="x-layout-content">
           <AppMainContent>
             <div class="docs-container">
               <div class="markdown-body">
-                  <router-view></router-view>
+                <router-view />
               </div>
             </div>
           </AppMainContent>
         </div>
-        <div class="x-layout-right-toolbar">
-          <AppRightToolbar></AppRightToolbar>>
-        </div>
+        <div class="x-layout-right-toolbar"><AppRightToolbar />></div>
       </div>
       <div class="n-layout-footer">
-        <AppFooter></AppFooter>
+        <AppFooter />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import AppSidebar from '@/components/layout/AppSidebar.vue';
-import AppFooter from '@/components/layout/AppFooter.vue';
-import AppHeader from '@/components/layout/AppHeader.vue';
+import AppSidebar from '@/components/layout/AppSidebar.vue'
+import AppFooter from '@/components/layout/AppFooter.vue'
+import AppHeader from '@/components/layout/AppHeader.vue'
 
-import AppMainContent from '@/components/layout/AppMainContent.vue';
-import AppRightToolbar from '@/components/layout/AppRightToolbar.vue';
-import {ref} from "vue"
-import { RouterView, useRouter } from 'vue-router';
-import { useUIStore } from '@/store/ui';
+import AppMainContent from '@/components/layout/AppMainContent.vue'
+import AppRightToolbar from '@/components/layout/AppRightToolbar.vue'
+import { ref } from 'vue'
+import { RouterView, useRouter } from 'vue-router'
+import { useUIStore } from '@/store/ui'
 
-const router = useRouter();
-const uiStore = useUIStore();
-uiStore.updateCurrentTab("docs");
-
+const router = useRouter()
+const uiStore = useUIStore()
+uiStore.updateCurrentTab('docs')
 
 const routerMap = {
-  0: "/docs/index",
-  1: "/docs/select_and_use",
-  2: "/docs/faq",
-};
+  0: '/docs/index',
+  1: '/docs/select_and_use',
+  2: '/docs/faq',
+}
 
-let currentMenu = ref(0);
+let currentMenu = ref(0)
 
-
-    function onClickMenu(id: number) {
-      
-      if (!routerMap[id]) {
-        return;
-      }
-      if (currentMenu.value == id) {
-        return;
-      }
-      currentMenu.value = id;
-      router.replace({path: routerMap[id]});
-    }
-  
+function onClickMenu(id: number) {
+  if (!routerMap[id]) {
+    return
+  }
+  if (currentMenu.value == id) {
+    return
+  }
+  currentMenu.value = id
+  router.replace({ path: routerMap[id] })
+}
 </script>
 
 <style lang="scss" scoped>
 @import '@/style/variables.scss';
 @import '@/style/variables.scss';
 @import '@/style/photon/photon.scss';
-
 
 .x-space {
   width: 100%;
@@ -189,8 +180,8 @@ let currentMenu = ref(0);
     padding-bottom: 30px;
 
     color: #444;
-    font-family: Georgia, Palatino, 'Palatino Linotype', Times,
-      'Times New Roman', serif;
+    font-family:
+      Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
     font-size: 14px;
     line-height: 20px;
     padding: 1em;

@@ -12,7 +12,6 @@
   margin: 0;
   padding: 0;
 
-
   * {
     margin: 0;
     white-space: nowrap;
@@ -30,7 +29,7 @@
   &:first-child {
     border-top: 0;
   }
-  
+
   &.active,
   // `.selected` is deprecated. Use `.active` instead.
   &.selected {
@@ -49,11 +48,11 @@
 }
 
 .media-object.pull-left {
-  margin-right: 10px
+  margin-right: 10px;
 }
 
 .media-object.pull-right {
-  margin-left: 10px
+  margin-left: 10px;
 }
 
 .media-body {
