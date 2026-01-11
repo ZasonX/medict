@@ -25,12 +25,12 @@ const (
 )
 
 type Resp struct {
-	Data interface{} `json:"data"`
-	Err  string      `json:"err"`
-	Code int         `json:"code"`
+	Data any    `json:"data"`
+	Err  string `json:"err"`
+	Code int    `json:"code"`
 }
 
-func BuildSuccess(data interface{}) *Resp {
+func BuildSuccess(data any) *Resp {
 	return &Resp{
 		Data: data,
 		Err:  "success",
