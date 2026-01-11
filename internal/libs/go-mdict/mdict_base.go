@@ -206,9 +206,10 @@ func (mdict *MdictBase) readKeyBlockMeta() error {
 	keyBlockNumBytes := keyBlockMetaBuffer[0:mdict.meta.numberWidth]
 
 	var keyBlockNumber uint64
-	if mdict.meta.numberWidth == 8 {
+	switch mdict.meta.numberWidth {
+	case 8:
 		keyBlockNumber = beBinToU64(keyBlockNumBytes)
-	} else if mdict.meta.numberWidth == 4 {
+	case 4:
 		keyBlockNumber = uint64(beBinToU32(keyBlockNumBytes))
 	}
 	keyBlockMeta.keyBlockNum = int64(keyBlockNumber)
@@ -220,9 +221,10 @@ func (mdict *MdictBase) readKeyBlockMeta() error {
 	}
 
 	var entriesNum uint64
-	if mdict.meta.numberWidth == 8 {
+	switch mdict.meta.numberWidth {
+	case 8:
 		entriesNum = beBinToU64(entriesNumBytes)
-	} else if mdict.meta.numberWidth == 4 {
+	case 4:
 		entriesNum = uint64(beBinToU32(entriesNumBytes))
 	}
 	keyBlockMeta.entriesNum = int64(entriesNum)
@@ -234,9 +236,10 @@ func (mdict *MdictBase) readKeyBlockMeta() error {
 		keyBlockInfoDecompressSizeBytes := keyBlockMetaBuffer[mdict.meta.numberWidth*2 : mdict.meta.numberWidth*2+mdict.meta.numberWidth]
 
 		var keyBlockInfoDecompressSize uint64
-		if mdict.meta.numberWidth == 8 {
+		switch mdict.meta.numberWidth {
+		case 8:
 			keyBlockInfoDecompressSize = beBinToU64(keyBlockInfoDecompressSizeBytes)
-		} else if mdict.meta.numberWidth == 4 {
+		case 4:
 			keyBlockInfoDecompressSize = uint64(beBinToU32(keyBlockInfoDecompressSizeBytes))
 		}
 		keyBlockMeta.keyBlockInfoDecompressSize = int64(keyBlockInfoDecompressSize)
@@ -251,9 +254,10 @@ func (mdict *MdictBase) readKeyBlockMeta() error {
 	keyBlockInfoSizeBytes := keyBlockMetaBuffer[keyBlockInfoSizeBytesStartOffset : keyBlockInfoSizeBytesStartOffset+mdict.meta.numberWidth]
 
 	var keyBlockInfoSize uint64
-	if mdict.meta.numberWidth == 8 {
+	switch mdict.meta.numberWidth {
+	case 8:
 		keyBlockInfoSize = beBinToU64(keyBlockInfoSizeBytes)
-	} else if mdict.meta.numberWidth == 4 {
+	case 4:
 		keyBlockInfoSize = uint64(beBinToU32(keyBlockInfoSizeBytes))
 	}
 
@@ -263,9 +267,10 @@ func (mdict *MdictBase) readKeyBlockMeta() error {
 	keyBlockDataSizeBytes := keyBlockMetaBuffer[keyBlockInfoSizeBytesStartOffset+mdict.meta.numberWidth : keyBlockInfoSizeBytesStartOffset+mdict.meta.numberWidth+mdict.meta.numberWidth]
 
 	var keyBlockDataSize uint64
-	if mdict.meta.numberWidth == 8 {
+	switch mdict.meta.numberWidth {
+	case 8:
 		keyBlockDataSize = beBinToU64(keyBlockDataSizeBytes)
-	} else if mdict.meta.numberWidth == 4 {
+	case 4:
 		keyBlockDataSize = uint64(beBinToU32(keyBlockDataSizeBytes))
 	}
 	keyBlockMeta.keyBlockDataTotalSize = int64(keyBlockDataSize)
