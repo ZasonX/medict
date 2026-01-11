@@ -16,19 +16,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import MainWindow from '@/view/main/index.vue'
-import DictWindow from '@/view/dict/index.vue'
-import PluginsWindow from '@/view/plugins/index.vue'
-import DebugWindow from '@/view/debug/index.vue'
-import SettingWindow from '@/view/setting/index.vue'
-import DocWindow from '@/view/docs/index.vue'
+import MainWindow from '@/view/main/MainView.vue'
+import DictWindow from '@/view/dict/DictView.vue'
+import PluginsWindow from '@/view/plugins/PluginView.vue'
+import DebugWindow from '@/view/debug/DebugView.vue'
+import SettingWindow from '@/view/setting/SettingView.vue'
+import DocWindow from '@/view/docs/DocsView.vue'
 
 import index_md from '@/assets/docs/index.md'
 import select_and_use_md from '@/assets/docs/select_and_use_dict.md'
 import faq_md from '@/assets/docs/faq.md'
 import terms_and_service from '@/assets/docs/terms_and_service.md'
 import license_md from '@/assets/docs/license.md'
-import about_md from '@/view/about/index.vue'
+import about_md from '@/view/about/AboutView.vue'
 
 import SettingDict from '@/view/setting/SettingDict.vue'
 import SettingSoftware from '@/view/setting/SettingSoftware.vue'
