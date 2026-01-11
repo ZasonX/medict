@@ -52,3 +52,9 @@ export class Resp {
     this.code = source['code'] as number
   }
 }
+
+export default {
+  KeyBlockEntry,
+  PlainDictionaryItem,
+  Resp,
+}

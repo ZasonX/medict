@@ -17,28 +17,28 @@
  */
 
 import { IDict } from './types'
-import { model } from './model'
+import { KeyBlockEntry, Resp } from './model'
 import { requestBackend } from '@/apis/apis'
 
 export const GetDictCover = async function (
   dict_id: string,
   cover_name: string
-): Promise<model.Resp> {
+): Promise<Resp> {
   try {
     const resp = await requestBackend('GetDictCover', { dict_id, cover_name })
     console.log('[dicts-api] GetDictCover: ', resp)
-    return resp.data as unknown as model.Resp
+    return resp.data as unknown as Resp
   } catch (error) {
     console.error('[dicts-api] GetDictCover: ', error)
     return Promise.reject(error)
   }
 }
 
-export const InitDicts = async function (): Promise<model.Resp> {
+export const InitDicts = async function (): Promise<Resp> {
   try {
     const resp = await requestBackend('InitDicts', {})
     console.log('[dicts-api] InitDicts: ', resp)
-    return resp.data as unknown as model.Resp
+    return resp.data as unknown as Resp
   } catch (error) {
     console.error('[dicts-api] InitDicts: ', error)
     return Promise.reject(error)
@@ -57,11 +57,11 @@ export const GetAllDicts = async function (): Promise<Array<IDict>> {
 }
 
 // BuildIndex
-export const BuildIndex = async function (dictid: string): Promise<model.Resp> {
+export const BuildIndex = async function (dictid: string): Promise<Resp> {
   try {
     const resp = await requestBackend('BuildIndexByDictId', { dictid: dictid })
     console.log('[dicts-api] BuildIndex: ', resp)
-    return resp.data as unknown as model.Resp
+    return resp.data as unknown as Resp
   } catch (error) {
     console.error('[dicts-api] BuildIndex: ', error)
     return Promise.reject(error)
@@ -71,14 +71,14 @@ export const BuildIndex = async function (dictid: string): Promise<model.Resp> {
 export const LookupWord = async function (
   dictid: string,
   word: string
-): Promise<model.Resp> {
+): Promise<Resp> {
   try {
     const resp = await requestBackend('LookupWord', {
       dict_id: dictid,
       word: word,
     })
     console.log('[dicts-api]', resp)
-    return resp.data as unknown as model.Resp
+    return resp.data as unknown as Resp
   } catch (error) {
     console.error('[dicts-api]', error)
     return Promise.reject(error)
@@ -88,14 +88,14 @@ export const LookupWord = async function (
 export const SearchWord = async function (
   dictid: string,
   word: string
-): Promise<model.Resp> {
+): Promise<Resp> {
   try {
     const resp = await requestBackend('SearchWord', {
       dict_id: dictid,
       word: word,
     })
     console.log('[dicts-api]', resp)
-    return resp.data as unknown as model.Resp
+    return resp.data as unknown as Resp
   } catch (error) {
     console.error('[dicts-api]', error)
     return Promise.reject(error)
@@ -104,15 +104,15 @@ export const SearchWord = async function (
 
 export const LocateWord = async function (
   dictid: string,
-  keyBlockEntry: model.KeyBlockEntry
-): Promise<model.Resp> {
+  keyBlockEntry: KeyBlockEntry
+): Promise<Resp> {
   try {
     const resp = await requestBackend('LocateWord', {
       dict_id: dictid,
       key_block_entry: keyBlockEntry,
     })
     console.log('[dicts-api]', resp)
-    return resp.data as unknown as model.Resp
+    return resp.data as unknown as Resp
   } catch (error) {
     console.error('[dicts-api]', error)
     return Promise.reject(error)

@@ -20,6 +20,7 @@ import { defineStore } from 'pinia'
 
 import { InitDicts, GetAllDicts, SearchWord } from '@/apis/dicts-api'
 import { StaticDictServerURL } from '@/apis/apis'
+import { Resp } from '@/apis/model'
 
 function constructQueryURL(entry) {
   const {
@@ -92,7 +93,14 @@ export const useDictQueryStore = defineStore('dictQuery', {
     queryPendingList: [],
     mainContent: btoa(DefaultContentTemplpate),
     mainContentURL: '',
-    selectDict: { id: '', name: '', path: '' },
+    selectDict: {
+      id: '',
+      name: '',
+      path: '',
+      description: {
+        description: '',
+      }
+    },
     inputSearchWord: '',
 
     historyStack: new HistoryStack(),
@@ -143,7 +151,7 @@ export const useDictQueryStore = defineStore('dictQuery', {
         })
     },
     // 更新 pending list
-    updatePendingList(wordList) {
+    updatePendingList(wordList: Resp) {
       console.log(`[app-event](store-action), updatePendingList`, wordList)
 
       this.queryPendingList = wordList
