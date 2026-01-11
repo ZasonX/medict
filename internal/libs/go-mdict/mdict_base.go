@@ -56,11 +56,12 @@ func (mdict *MdictBase) readDictHeader() error {
 	case "Yes":
 		meta.encryptType = EncryptRecordEnc
 	default:
-		if encrypted[0] == '2' {
+		switch encrypted[0] {
+		case '2':
 			meta.encryptType = EncryptKeyInfoEnc
-		} else if encrypted[0] == '1' {
+		case '1':
 			meta.encryptType = EncryptRecordEnc
-		} else {
+		default:
 			meta.encryptType = EncryptNoEnc
 		}
 	}
