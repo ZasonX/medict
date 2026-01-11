@@ -18,6 +18,7 @@
 
 import naive from 'naive-ui'
 import { createApp } from 'vue'
+import type { Router } from 'vue-router'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { createPinia } from 'pinia'
 
@@ -34,7 +35,7 @@ import '@/style/renderer.scss'
 
 import '@/renderer.init'
 
-const router = createRouter({
+const router: Router = createRouter({
   history: createWebHashHistory(),
   routes,
 })
@@ -43,17 +44,16 @@ const pinia = createPinia()
 
 const app = createApp(App)
 
-router.push({ path: '/' }) // store.state.defaultWindow });
+router.push({ path: '/' })
 app.use(router)
 
 app.use(naive)
 app.use(pinia)
 
 // remove skeleton
-let skeleton = document.querySelector('#skeleton-wrapper')
+const skeleton = document.querySelector('#skeleton-wrapper')
 if (skeleton) {
   skeleton.innerHTML = ''
 }
 
-// appMain.$mount('#app');
 app.mount('#app')
