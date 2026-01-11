@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write .",
+    "lint": "prettier --check ."
   },
   "type": "module",
   "dependencies": {
@@ -31,6 +33,7 @@
     "markdown-it": "^13.0.1",
     "markdown-it-prism": "^2.3.0",
     "naive-ui": "^2.34.4",
+    "prettier": "^3.7.4",
     "sass": "^1.66.1",
     "vfonts": "^0.0.3",
     "vite": "^4.5.14",
