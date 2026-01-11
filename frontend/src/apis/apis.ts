@@ -49,7 +49,8 @@ export const BaseDictDirectory = async (): Promise<string> => {
   }
 }
 
-export const requestBackend = async (apiName, data): Promise<model.Resp> => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const requestBackend = async (apiName: string, data: { [key: string]: any }): Promise<model.Resp> => {
   try {
     console.log(
       `[dicts-api] ipc call, dispatch [${apiName}] event, args:`,
