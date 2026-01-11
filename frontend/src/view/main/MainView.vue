@@ -49,7 +49,7 @@
 <script setup>
 import AppHeader from '@/components/layout/AppHeader.vue'
 import MainSidebar from './MainSidebar.vue'
-import MainRightToolbar from './MainRightToolbar.vue'
+// import MainRightToolbar from './MainRightToolbar.vue'
 import MainFooter from './MainFooter.vue'
 import MainContentFrame from './MainContentFrame.vue'
 import MainFunctions from './MainFunctions.vue'
