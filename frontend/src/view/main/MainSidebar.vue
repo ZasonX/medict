@@ -51,56 +51,51 @@
 </style>
 <template>
   <AppSidebar>
-      <ul id="word-pending-list">
-        <li
-          v-for="item in dictQueryStore.queryPendingList"
-          :data-id="item.id"
-          :key="item.id"
-          @click="selectItem(item.id)"
-          :class="selected_id == item.id ? 'active' : ''"
-        >
-          <span>{{ item.keyword }}</span>
-        </li>
-      </ul>
+    <ul id="word-pending-list">
+      <li
+        v-for="item in dictQueryStore.queryPendingList"
+        :data-id="item.id"
+        :key="item.id"
+        @click="selectItem(item.id)"
+        :class="selected_id == item.id ? 'active' : ''"
+      >
+        <span>{{ item.keyword }}</span>
+      </li>
+    </ul>
   </AppSidebar>
 </template>
 
 <script setup>
-import AppSidebar from "@/components/layout/AppSidebar.vue";
+import AppSidebar from '@/components/layout/AppSidebar.vue'
 
-import { useDictQueryStore } from '@/store/dict';
-import { ref, onMounted } from 'vue';
-const dictQueryStore = useDictQueryStore();
-const selected_id = ref('0');
+import { useDictQueryStore } from '@/store/dict'
+import { ref, onMounted } from 'vue'
+const dictQueryStore = useDictQueryStore()
+const selected_id = ref('0')
 
 function selectItem(entry_id) {
-  selected_id.value = entry_id;
-  dictQueryStore.locateWord(entry_id);
+  selected_id.value = entry_id
+  dictQueryStore.locateWord(entry_id)
 }
 
-
-onMounted(()=>{
+onMounted(() => {
   // const list = document.getElementById('word-pending-list');
   document.addEventListener('keydown', (e) => {
-     if (e.key == 'ArrowUp') {
+    if (e.key == 'ArrowUp') {
       if (selected_id.value == '0') {
-        selected_id.value = dictQueryStore.queryPendingList.length - 1;
+        selected_id.value = dictQueryStore.queryPendingList.length - 1
       } else {
-        selected_id.value = parseInt(selected_id.value) - 1;
+        selected_id.value = parseInt(selected_id.value) - 1
       }
-      dictQueryStore.locateWord(selected_id.value);
+      dictQueryStore.locateWord(selected_id.value)
     } else if (e.key == 'ArrowDown') {
       if (selected_id.value == dictQueryStore.queryPendingList.length - 1) {
-        selected_id.value = '0';
+        selected_id.value = '0'
       } else {
-        selected_id.value = parseInt(selected_id.value) + 1;
+        selected_id.value = parseInt(selected_id.value) + 1
       }
-      dictQueryStore.locateWord(selected_id.value);
+      dictQueryStore.locateWord(selected_id.value)
     }
-
-  });
-  
-
+  })
 })
-
 </script>

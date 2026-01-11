@@ -20,7 +20,7 @@
   <div class="x-space">
     <div class="x-layout">
       <div class="x-layout-header">
-            <AppHeader/>
+        <AppHeader />
       </div>
       <div class="x-layout-main-area">
         <div class="x-layout-sidebar">
@@ -128,33 +128,33 @@
 </template>
 
 <script setup>
-import AppHeader from '@/components/layout/AppHeader.vue';
-import AppSidebar from '@/components/layout/AppSidebar.vue';
-import AppFooter from '@/components/layout/AppFooter.vue';
-import AppFunctions from '@/components/layout/AppFunctions.vue';
-import AppMainContent from '@/components/layout/AppMainContent.vue';
-import AppRightToolbar from '@/components/layout/AppRightToolbar.vue';
+import AppHeader from '@/components/layout/AppHeader.vue'
+import AppSidebar from '@/components/layout/AppSidebar.vue'
+import AppFooter from '@/components/layout/AppFooter.vue'
+import AppFunctions from '@/components/layout/AppFunctions.vue'
+import AppMainContent from '@/components/layout/AppMainContent.vue'
+import AppRightToolbar from '@/components/layout/AppRightToolbar.vue'
 
-import { NIcon, NButton, NButtonGroup } from 'naive-ui';
-import { useUIStore } from '@/store/ui';
-import { useDictQueryStore } from '@/store/dict';
-import { GetAllDicts } from '@/apis/dicts-api';
+import { NIcon, NButton, NButtonGroup } from 'naive-ui'
+import { useUIStore } from '@/store/ui'
+import { useDictQueryStore } from '@/store/dict'
+import { GetAllDicts } from '@/apis/dicts-api'
 
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 
-const dictsList = ref([]);
+const dictsList = ref([])
 
-const dictQueryStore = useDictQueryStore();
-const uiStore = useUIStore();
-uiStore.updateCurrentTab('dict');
+const dictQueryStore = useDictQueryStore()
+const uiStore = useUIStore()
+uiStore.updateCurrentTab('dict')
 
 onMounted(() => {
   GetAllDicts()
     .then((res) => {
-      console.log(res);
-      dictsList.value = [];
+      console.log(res)
+      dictsList.value = []
       res.forEach((dict) => {
-        console.log(dict);
+        console.log(dict)
         dictsList.value.push({
           name: dict.name,
           dict_type: dict.type,
@@ -164,14 +164,14 @@ onMounted(() => {
           createDate: dict.description.createDate,
           id: dict.id,
           base_dir: dict.base_dir,
-        });
-      });
-      console.log(dictsList.value);
+        })
+      })
+      console.log(dictsList.value)
     })
     .catch((err) => {
-      console.log(err);
-    });
-});
+      console.log(err)
+    })
+})
 </script>
 
 <style lang="scss" scoped>
@@ -207,9 +207,7 @@ onMounted(() => {
       }
 
       .x-layout-content {
-        width: calc(
-          100% - $layout-left-sidebar-width 
-        );
+        width: calc(100% - $layout-left-sidebar-width);
         height: 100%;
         padding: 0;
         margin: 0;
@@ -260,7 +258,7 @@ onMounted(() => {
   height: 100%;
   width: 100%;
 }
-.dicts-hint{
+.dicts-hint {
   font-size: 12px;
   height: 20px;
   line-height: 20px;

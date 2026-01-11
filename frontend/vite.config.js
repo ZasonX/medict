@@ -1,12 +1,12 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import alias from '@rollup/plugin-alias';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import alias from '@rollup/plugin-alias'
 
-import markdown from 'vite-plugin-md';
-import Inspect from 'vite-plugin-inspect';
-import { resolve } from 'path';
+import markdown from 'vite-plugin-md'
+import Inspect from 'vite-plugin-inspect'
+import { resolve } from 'path'
 
-const root = resolve(__dirname);
+const root = resolve(__dirname)
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,16 +15,15 @@ export default defineConfig({
     alias(),
     vue({
       include: [/\.vue$/, /\.md$/], // <--
-
     }),
     markdown(),
-    Inspect()
+    Inspect(),
   ],
   resolve: {
     alias: {
-      "@": resolve(root, "src"),
-      "$": resolve(root, "wailsjs"),
-      'vue': 'vue/dist/vue.esm-bundler.js'
+      '@': resolve(root, 'src'),
+      $: resolve(root, 'wailsjs'),
+      vue: 'vue/dist/vue.esm-bundler.js',
     },
   },
   server: {
@@ -36,4 +35,4 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
-});
+})

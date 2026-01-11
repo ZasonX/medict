@@ -1,3 +1,1 @@
-<template>
-   edit 
-</template>
+<template>edit</template>

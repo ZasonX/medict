@@ -37,7 +37,7 @@
   <div class="x-space">
     <div class="x-layout">
       <div class="x-layout-header">
-            <AppHeader/>
+        <AppHeader />
       </div>
       <div class="x-layout-main-area">
         <div class="x-layout-sidebar">
@@ -47,42 +47,66 @@
                 <nav class="nav-group">
                   <h5 class="nav-group-title">APP 设置</h5>
                   <!-- <a class="nav-group-item active"> -->
-                  <span class="nav-group-item" @click='changeTab("/setting/dict")'>
+                  <span
+                    class="nav-group-item"
+                    @click="changeTab('/setting/dict')"
+                  >
                     <span class="icon icon-book"></span>
                     <a> 词典设置 </a>
                   </span>
-                  <span class="nav-group-item" @click='changeTab("/setting/software")'>
+                  <span
+                    class="nav-group-item"
+                    @click="changeTab('/setting/software')"
+                  >
                     <span class="icon icon-cog"></span>
                     <a> 软件设置 </a>
                   </span>
-                  <span class="nav-group-item" @click='changeTab("/setting/theme")'>
+                  <span
+                    class="nav-group-item"
+                    @click="changeTab('/setting/theme')"
+                  >
                     <span class="icon icon-palette"></span>
                     <a> 主题设置 </a>
                   </span>
-                  <span class="nav-group-item" @click='changeTab("/setting/plugin")'>
+                  <span
+                    class="nav-group-item"
+                    @click="changeTab('/setting/plugin')"
+                  >
                     <span class="icon icon-rocket"></span>
                     <a> 插件设置</a>
                   </span>
                 </nav>
                 <nav class="nav-group">
                   <h5 class="nav-group-title">关于信息</h5>
-                  <span class="nav-group-item" @click='changeTab("/docs")'>
+                  <span class="nav-group-item" @click="changeTab('/docs')">
                     <span class="icon icon-help-circled"></span>
                     <a> 使用说明</a>
                   </span>
-                  <span class="nav-group-item" @click='changeTab("/setting/terms")'>
+                  <span
+                    class="nav-group-item"
+                    @click="changeTab('/setting/terms')"
+                  >
                     <span class="icon icon-feather"></span>
                     <a> 隐私声明</a>
                   </span>
-                  <span class="nav-group-item" @click='changeTab("/setting/about")'>
+                  <span
+                    class="nav-group-item"
+                    @click="changeTab('/setting/about')"
+                  >
                     <span class="icon icon-info-circled"></span>
                     <a> 关于信息</a>
                   </span>
-                  <span class="nav-group-item" @click='changeTab("/setting/update")'>
+                  <span
+                    class="nav-group-item"
+                    @click="changeTab('/setting/update')"
+                  >
                     <span class="icon icon-arrows-ccw"></span>
                     <a> 版本更新</a>
                   </span>
-                  <span class="nav-group-item" @click='changeTab("/setting/license")'>
+                  <span
+                    class="nav-group-item"
+                    @click="changeTab('/setting/license')"
+                  >
                     <span class="icon icon-cc"></span>
                     <a> 开源协议</a>
                   </span>
@@ -105,30 +129,30 @@
 </template>
 
 <script setup>
-import AppHeader from '@/components/layout/AppHeader.vue';
-import AppSidebar from '../../components/layout/AppSidebar.vue';
-import AppFooter from '../../components/layout/AppFooter.vue';
-import AppFunctions from '../../components/layout/AppFunctions.vue';
-import AppMainContent from '../../components/layout/AppMainContent.vue';
-import AppRightToolbar from '@/components/layout/AppRightToolbar.vue';
-import { RouterView, RouterLink, useRouter } from 'vue-router';
+import AppHeader from '@/components/layout/AppHeader.vue'
+import AppSidebar from '../../components/layout/AppSidebar.vue'
+import AppFooter from '../../components/layout/AppFooter.vue'
+import AppFunctions from '../../components/layout/AppFunctions.vue'
+import AppMainContent from '../../components/layout/AppMainContent.vue'
+import AppRightToolbar from '@/components/layout/AppRightToolbar.vue'
+import { RouterView, RouterLink, useRouter } from 'vue-router'
 
-import { NIcon, NButton, NButtonGroup } from 'naive-ui';
-import { useUIStore } from '@/store/ui';
-import { useDictQueryStore } from '@/store/dict';
-import { GetAllDicts } from '@/apis/dicts-api';
+import { NIcon, NButton, NButtonGroup } from 'naive-ui'
+import { useUIStore } from '@/store/ui'
+import { useDictQueryStore } from '@/store/dict'
+import { GetAllDicts } from '@/apis/dicts-api'
 
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 
-const dictsList = ref([]);
-const dictQueryStore = useDictQueryStore();
-const uiStore = useUIStore();
-const router = useRouter();
+const dictsList = ref([])
+const dictQueryStore = useDictQueryStore()
+const uiStore = useUIStore()
+const router = useRouter()
 
-uiStore.updateCurrentTab('setting');
+uiStore.updateCurrentTab('setting')
 
 function changeTab(tablink) {
-  router.replace({path: tablink});
+  router.replace({ path: tablink })
 }
 </script>
 
@@ -165,9 +189,7 @@ function changeTab(tablink) {
       }
 
       .x-layout-content {
-        width: calc(
-          100% - $layout-left-sidebar-width
-        );
+        width: calc(100% - $layout-left-sidebar-width);
         height: 100%;
         padding: 0;
         margin: 0;
@@ -203,8 +225,8 @@ function changeTab(tablink) {
   padding-bottom: 30px;
 
   color: #444;
-  font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman',
-    serif;
+  font-family:
+    Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
   font-size: 14px;
   line-height: 20px;
   padding: 1em;

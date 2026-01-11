@@ -25,37 +25,34 @@
 </template>
 
 <script lang="ts" setup>
-import AppFooter from '@/components/layout/AppFooter.vue';
-import { onMounted, computed } from 'vue';
-import { useUIStore } from '@/store/ui';
+import AppFooter from '@/components/layout/AppFooter.vue'
+import { onMounted, computed } from 'vue'
+import { useUIStore } from '@/store/ui'
 
-const uiStore = useUIStore();
+const uiStore = useUIStore()
 
-onMounted(()=>{
+onMounted(() => {})
+
+const percentage_hint = computed(() => {
+  return uiStore.progressHint
 })
-
-const percentage_hint = computed(() =>{
-  return uiStore.progressHint;
-})
-
 </script>
 
 <style lang="scss" scoped>
 .index-process-hint {
   font-size: 12px;
   line-height: 20px;
-  margin: 0 5px ;
+  margin: 0 5px;
 
   font-style: normal;
   color: #666;
-
 }
-  
-  .building-index-process {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 20px;
-    width: 120px;
-  }
+
+.building-index-process {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 20px;
+  width: 120px;
+}
 </style>

@@ -20,18 +20,15 @@
 @import '@/style/variables.scss';
 @import '@/style/photon/photon.scss';
 
-
 .about-view {
   height: 100%;
   overflow-y: auto;
   padding: 15px 10px;
   .about-title {
   }
-.about-body {
-  min-height: 260px;
-}
-
-
+  .about-body {
+    min-height: 260px;
+  }
 }
 
 .about-section {
@@ -112,7 +109,6 @@
 //     background-image: none;
 //   }
 // }
-
 </style>
 
 <template>
@@ -138,7 +134,7 @@
                 class="btn btn-default"
                 @click="openExternal('https://github.com/terasum/medict')"
               >
-              <span class="icon icon-github"></span>&nbsp;github
+                <span class="icon icon-github"></span>&nbsp;github
               </button>
             </div>
           </div>
@@ -194,11 +190,11 @@
 </template>
 
 <script lang="ts" setup>
-import { BrowserOpenURL } from '../../../wailsjs/runtime/runtime';
-import { Code, PeopleCarry } from '@vicons/fa';
-import { NIcon } from 'naive-ui';
+import { BrowserOpenURL } from '../../../wailsjs/runtime/runtime'
+import { Code, PeopleCarry } from '@vicons/fa'
+import { NIcon } from 'naive-ui'
 
 function openExternal(url: string) {
-  BrowserOpenURL(url);
+  BrowserOpenURL(url)
 }
 </script>

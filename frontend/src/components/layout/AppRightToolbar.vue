@@ -23,7 +23,6 @@
   height: 100%;
   width: $layout-right-toolbar-width;
 
-
   .toolbar-content {
     display: flex;
     flex-direction: row;
@@ -31,8 +30,8 @@
     border-left: 1px solid #dcdcdc;
     overflow-y: auto;
     &::-webkit-scrollbar {
-    display: none;
-}
+      display: none;
+    }
   }
 }
 </style>

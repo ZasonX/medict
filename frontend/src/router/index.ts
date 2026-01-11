@@ -16,34 +16,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import MainWindow from '@/view/main/index.vue';
-import DictWindow from '@/view/dict/index.vue';
-import PluginsWindow from '@/view/plugins/index.vue';
-import DebugWindow from '@/view/debug/index.vue';
-import SettingWindow from '@/view/setting/index.vue';
-import DocWindow from '@/view/docs/index.vue';
+import MainWindow from '@/view/main/index.vue'
+import DictWindow from '@/view/dict/index.vue'
+import PluginsWindow from '@/view/plugins/index.vue'
+import DebugWindow from '@/view/debug/index.vue'
+import SettingWindow from '@/view/setting/index.vue'
+import DocWindow from '@/view/docs/index.vue'
 
-import index_md from '@/assets/docs/index.md';
-import select_and_use_md from '@/assets/docs/select_and_use_dict.md';
-import faq_md from '@/assets/docs/faq.md';
-import terms_and_service from '@/assets/docs/terms_and_service.md';
-import license_md from '@/assets/docs/license.md';
-import about_md from '@/view/about/index.vue';
+import index_md from '@/assets/docs/index.md'
+import select_and_use_md from '@/assets/docs/select_and_use_dict.md'
+import faq_md from '@/assets/docs/faq.md'
+import terms_and_service from '@/assets/docs/terms_and_service.md'
+import license_md from '@/assets/docs/license.md'
+import about_md from '@/view/about/index.vue'
 
-import SettingDict from "@/view/setting/SettingDict.vue";
-import SettingSoftware from "@/view/setting/SettingSoftware.vue";
-import SettingTheme from "@/view/setting/SettingTheme.vue";
-import SettingPlugin from "@/view/setting/SettingPlugin.vue";
-import SettingUpdater from "@/view/setting/SettingUpdate.vue";
+import SettingDict from '@/view/setting/SettingDict.vue'
+import SettingSoftware from '@/view/setting/SettingSoftware.vue'
+import SettingTheme from '@/view/setting/SettingTheme.vue'
+import SettingPlugin from '@/view/setting/SettingPlugin.vue'
+import SettingUpdater from '@/view/setting/SettingUpdate.vue'
 
-import DebugResourceSearchView from "@/view/debug/DebugResourceSearch.vue";
-import DebugEditDictView from "@/view/debug/DebugEditDict.vue";
+import DebugResourceSearchView from '@/view/debug/DebugResourceSearch.vue'
+import DebugEditDictView from '@/view/debug/DebugEditDict.vue'
 
 export default [
   { path: '/', component: MainWindow },
   { path: '/dict', component: DictWindow },
-  { path: '/setting', component: SettingWindow, children:[
-    
+  {
+    path: '/setting',
+    component: SettingWindow,
+    children: [
       { path: '', component: SettingDict },
       { path: 'dict', component: SettingDict },
       { path: 'software', component: SettingSoftware },
@@ -53,15 +55,18 @@ export default [
       { path: 'license', component: license_md },
       { path: 'about', component: about_md },
       { path: 'update', component: SettingUpdater },
-    
-  ]},
+    ],
+  },
   { path: '/plugins', component: PluginsWindow },
-  { path: '/debug', component: DebugWindow,
+  {
+    path: '/debug',
+    component: DebugWindow,
     children: [
-      {path:"", component: DebugResourceSearchView},
-      {path:"resource-search", component: DebugResourceSearchView},
-      {path:"edit-dict", component: DebugEditDictView},
-    ] },
+      { path: '', component: DebugResourceSearchView },
+      { path: 'resource-search', component: DebugResourceSearchView },
+      { path: 'edit-dict', component: DebugEditDictView },
+    ],
+  },
   {
     path: '/docs',
     component: DocWindow,
@@ -72,4 +77,4 @@ export default [
       { path: 'faq', component: faq_md },
     ],
   },
-];
+]

@@ -16,38 +16,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Dictionary } from '../model/Dictionary';
+import { Dictionary } from '../model/Dictionary'
 
 export declare class DictItem {
-  id: string;
-  name: string;
+  id: string
+  name: string
 }
 
 export declare class StoreDataType {
-  defaultWindow: string;
+  defaultWindow: string
   // defaultWindow: '/',
   headerData: {
-    currentTab: string;
+    currentTab: string
     // currentTab: '词典',
-  };
+  }
   sideBarData: {
-    selectedWordIdx: number;
-    candidateWordNum: number;
-  };
+    selectedWordIdx: number
+    candidateWordNum: number
+  }
 
-  dictionaries: Dictionary[];
-  dictBaseDir: string;
-  suggestWords: any[];
-  historyStack: any[];
-  currentWord: { dictid: string, word:string };
-  currentLookupWord: string;
-  currentActualWord: string;
-  currentContent: string;
-  currentSelectDict: DictItem;
+  dictionaries: Dictionary[]
+  dictBaseDir: string
+  suggestWords: any[]
+  historyStack: any[]
+  currentWord: { dictid: string; word: string }
+  currentLookupWord: string
+  currentActualWord: string
+  currentContent: string
+  currentSelectDict: DictItem
   translateApi: {
     baidu: {
-      appid: string;
-      appkey: string;
-    };
-  };
+      appid: string
+      appkey: string
+    }
+  }
 }

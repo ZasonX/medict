@@ -30,49 +30,46 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  cursor:default;
+  cursor: default;
 
-  
-  .sidebar-content{
+  .sidebar-content {
     border-right: 1px solid #dcdcdc;
     padding: 0;
     margin: 0;
     user-select: none;
-    height: calc(100% -  $layout-sidebar-logo-height);
-    ul{
+    height: calc(100% - $layout-sidebar-logo-height);
+    ul {
       height: 100%;
       overflow-y: scroll;
       list-style: none;
       margin: 0;
-      padding: 0 0 0 6px;;
-      li{
-       margin: 0 4px 0 4px;
-       padding: 0 0px 0 6px;;
-       border-bottom: 1px solid #f1f1f1;
-       border-radius: 3px;
-       user-select: none;
-       font-size: 16px;
-       -webkit-user-select: none;
-       &:hover{
+      padding: 0 0 0 6px;
+      li {
+        margin: 0 4px 0 4px;
+        padding: 0 0px 0 6px;
+        border-bottom: 1px solid #f1f1f1;
+        border-radius: 3px;
+        user-select: none;
+        font-size: 16px;
+        -webkit-user-select: none;
+        &:hover {
           background-color: #f1f1f1;
           cursor: pointer;
-       }
+        }
       }
-      .active{
-          background-color: #f2f2f2;
-       }
+      .active {
+        background-color: #f2f2f2;
+      }
     }
-
   }
 }
 </style>
 <template>
   <div id="app-sidebar" class="app-sidebar">
     <div class="sidebar-content">
-        <slot></slot>
+      <slot></slot>
     </div>
   </div>
 </template>
 
-<script setup>
-</script>
+<script setup></script>

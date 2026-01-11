@@ -19,7 +19,7 @@
 import axios from 'axios'
 
 const service = axios.create({
-  timeout: 5000
+  timeout: 5000,
   // withCredentials: true // send cookies when cross-domain requests
 })
 
@@ -50,11 +50,11 @@ service.interceptors.response.use(
     // You can change this part for your own usage.
     const res = response.data
     if (res.code !== 200) {
-    //   Message({
-    //     message: res.message || 'Error',
-    //     type: 'error',
-    //     duration: 5 * 1000
-    //   })
+      //   Message({
+      //     message: res.message || 'Error',
+      //     type: 'error',
+      //     duration: 5 * 1000
+      //   })
       if (res.code === 508 || res.code === 512 || res.code === 514) {
         // MessageBox.confirm(
         //   '你已被登出，可以取消继续留在该页面，或者重新登录',
@@ -69,7 +69,7 @@ service.interceptors.response.use(
         //   location.reload() // To prevent bugs from vue-router
         // })
       }
-      console.error("request error:", res)
+      console.error('request error:', res)
       return Promise.reject(new Error(res.err || 'Error'))
     } else {
       return response.data

@@ -16,90 +16,86 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-
 <template>
-<div class="lazy-iframe"></div>
+  <div class="lazy-iframe"></div>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent } from 'vue'
 
-import uuidV1 from 'uuid/v1';
+import uuidV1 from 'uuid/v1'
 
-import utils from 'src/utils/utils';
+import utils from 'src/utils/utils'
 
 function generateGuid() {
-  return uuidV1();
+  return uuidV1()
 }
-
-
 
 export default defineComponent({
   name: 'lazy-iframe',
   props: {
     src: {
       type: String,
-      required: true
+      required: true,
     },
     crossorigin: {
       type: String,
       required: false,
-      default: 'anonymous'
+      default: 'anonymous',
     },
     target: {
       type: String,
       required: false,
-      default: '_parent'
+      default: '_parent',
     },
     className: {
       type: String,
-      required: false
+      required: false,
     },
     allow: {
       type: String,
-      required: false
+      required: false,
     },
     name: {
       type: String,
-      required: false
+      required: false,
     },
     title: {
       type: String,
-      required: false
+      required: false,
     },
     sandbox: {
       type: String,
-      required: false
-    }
+      required: false,
+    },
   },
   data() {
     return {
       iframeEl: null,
       iframeLoadedMessage: `IFRAME_LOADED_${generateGuid()}`,
-      iframeOnReadyStateChangeMessage: `IFRAME_ON_READ_STATE_CHANGE_${generateGuid()}`
-    };
+      iframeOnReadyStateChangeMessage: `IFRAME_ON_READ_STATE_CHANGE_${generateGuid()}`,
+    }
   },
   computed: {},
   watch: {
     src() {
-      this.reinitIframe(this);
-    }
+      this.reinitIframe(this)
+    },
   },
   methods: {
     removeIframe() {
       while (this.$el.firstChild) {
-        this.$el.removeChild(this.$el.firstChild);
+        this.$el.removeChild(this.$el.firstChild)
       }
     },
     setIframeUrl() {
       if (this.iframeEl.contentWindow === null) {
         setTimeout(this.setIframeUrl)
-        return;
+        return
       }
-      const iframeDoc = this.iframeEl.contentWindow.document;
-      iframeDoc.open()
-        .write(
-          `
+      const iframeDoc = this.iframeEl.contentWindow.document
+      iframeDoc.open().write(
+        `
           <body onload="window.location.replace('${this.src}'); parent.postMessage('${this.iframeLoadedMessage}', '*')"></body>
           <script>
             window.document.onreadystatechange = function () {
@@ -109,55 +105,69 @@ export default defineComponent({
             };
           <\/script>
           `
-        );
+      )
 
-      iframeDoc.close(); //iframe onload event happens
+      iframeDoc.close() //iframe onload event happens
     },
-    reinitIframe: utils.debounce(vm => {
-      vm.removeIframe();
-      vm.initIframe();
+    reinitIframe: utils.debounce((vm) => {
+      vm.removeIframe()
+      vm.initIframe()
     }, 200),
     initIframe() {
-      this.iframeEl = document.createElement('iframe');
-      this.iframeEl.setAttribute('style', 'visibility: hidden; position: absolute; top: -99999px; border: none;');
-      if (this.src) this.iframeEl.setAttribute('iframe-src', this.src);
-      if (this.className) this.iframeEl.setAttribute('class', this.className);
-      if (this.class) this.iframeEl.setAttribute('class', this.class);
-      if (this.crossorigin) this.iframeEl.setAttribute('crossorigin', this.crossorigin);
-      if (this.target) this.iframeEl.setAttribute('target', this.target);
-      if (this.allow) this.iframeEl.setAttribute('allow', this.allow);
-      if (this.name) this.iframeEl.setAttribute('name', this.name);
-      if (this.title) this.iframeEl.setAttribute('title', this.title);
-      if (this.sandbox) this.iframeEl.setAttribute('sandbox', this.sandbox);
+      this.iframeEl = document.createElement('iframe')
+      this.iframeEl.setAttribute(
+        'style',
+        'visibility: hidden; position: absolute; top: -99999px; border: none;'
+      )
+      if (this.src) this.iframeEl.setAttribute('iframe-src', this.src)
+      if (this.className) this.iframeEl.setAttribute('class', this.className)
+      if (this.class) this.iframeEl.setAttribute('class', this.class)
+      if (this.crossorigin)
+        this.iframeEl.setAttribute('crossorigin', this.crossorigin)
+      if (this.target) this.iframeEl.setAttribute('target', this.target)
+      if (this.allow) this.iframeEl.setAttribute('allow', this.allow)
+      if (this.name) this.iframeEl.setAttribute('name', this.name)
+      if (this.title) this.iframeEl.setAttribute('title', this.title)
+      if (this.sandbox) this.iframeEl.setAttribute('sandbox', this.sandbox)
 
-      this.$el.appendChild(this.iframeEl);
+      this.$el.appendChild(this.iframeEl)
 
-      this.setIframeUrl();
+      this.setIframeUrl()
     },
     listenForEvents() {
       // Create IE + others compatible event handler
-      const eventMethod = window.addEventListener ? 'addEventListener' : 'attachEvent';
-      const eventer = window[eventMethod];
-      const messageEvent = eventMethod === 'attachEvent' ? 'onmessage' : 'message';
+      const eventMethod = window.addEventListener
+        ? 'addEventListener'
+        : 'attachEvent'
+      const eventer = window[eventMethod]
+      const messageEvent =
+        eventMethod === 'attachEvent' ? 'onmessage' : 'message'
 
       // Listen to message from child window
-      eventer(messageEvent, event => {
-        if (event.data === this.iframeLoadedMessage) {
-          this.$emit('iframe-load');
+      eventer(
+        messageEvent,
+        (event) => {
+          if (event.data === this.iframeLoadedMessage) {
+            this.$emit('iframe-load')
 
-          this.iframeEl.setAttribute('style', 'visibility: visible; border: none;');
-        }
+            this.iframeEl.setAttribute(
+              'style',
+              'visibility: visible; border: none;'
+            )
+          }
 
-        if (event.data === this.iframeOnReadyStateChangeMessage) {
-          this.$emit('load');
-        }
-      }, false);
-    }
+          if (event.data === this.iframeOnReadyStateChangeMessage) {
+            this.$emit('load')
+          }
+        },
+        false
+      )
+    },
   },
   mounted() {
-    this.listenForEvents();
+    this.listenForEvents()
 
-    this.initIframe();
-  }
-});
+    this.initIframe()
+  },
+})
 </script>

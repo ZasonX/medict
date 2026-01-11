@@ -16,32 +16,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { defineStore } from 'pinia';
+import { defineStore } from 'pinia'
 
 export const useUIStore = defineStore('ui', {
   state: () => ({
     currentTab: 'search',
 
-    progressHint: "",
-    
+    progressHint: '',
   }),
   actions: {
     updateCurrentTab(tabName: string) {
-      this.currentTab = tabName;
+      this.currentTab = tabName
     },
     isSearchInputActive() {
-        return this.currentTab === "search";
+      return this.currentTab === 'search'
     },
-    updateProgress(hint:string, progress:number) {
-      if (progress > 100)  { 
-        progress = 100;
+    updateProgress(hint: string, progress: number) {
+      if (progress > 100) {
+        progress = 100
       }
       if (progress < 0) {
         progress = 0
       }
 
-      this.progressHint = hint;
-
-    }
+      this.progressHint = hint
+    },
   },
-});
+})

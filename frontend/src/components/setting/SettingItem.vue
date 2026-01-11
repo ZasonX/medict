@@ -16,9 +16,9 @@
   </div>
 </template>
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps } from 'vue'
 
-defineProps(['title', 'value']);
+defineProps(['title', 'value'])
 </script>
 <style lang="scss" scoped>
 .setting-group {

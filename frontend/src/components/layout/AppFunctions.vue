@@ -8,7 +8,6 @@
   flex-direction: row;
 
   .header {
-
     height: calc($layout-header-height - 1px);
     display: flex;
     width: 100%;
@@ -77,38 +76,56 @@
 <template>
   <div class="app-content-functions">
     <div class="header">
-
-
       <div class="header-nav-functions">
-        <div class="fn-box" @click="changeTab('search')"  :class="uiStore.currentTab == 'search'?'active':''">
+        <div
+          class="fn-box"
+          @click="changeTab('search')"
+          :class="uiStore.currentTab == 'search' ? 'active' : ''"
+        >
           <span class="fn-box-icon">
             <Search />
           </span>
           <span class="fn-box-text">搜索</span>
         </div>
 
-        <div class="fn-box" @click="changeTab('dict')" :class="uiStore.currentTab == 'dict'?'active':''">
+        <div
+          class="fn-box"
+          @click="changeTab('dict')"
+          :class="uiStore.currentTab == 'dict' ? 'active' : ''"
+        >
           <span class="fn-box-icon">
             <Book />
           </span>
           <span class="fn-box-text">词典</span>
         </div>
 
-      <div class="fn-box" @click="changeTab('plugins')" :class="uiStore.currentTab == 'plugins'?'active':''">
+        <div
+          class="fn-box"
+          @click="changeTab('plugins')"
+          :class="uiStore.currentTab == 'plugins' ? 'active' : ''"
+        >
           <span class="fn-box-icon">
             <Toolbox />
           </span>
           <span class="fn-box-text">插件</span>
         </div>
 
-        <div class="fn-box" @click="changeTab('debug')"  :class="uiStore.currentTab == 'debug'?'active':''">
+        <div
+          class="fn-box"
+          @click="changeTab('debug')"
+          :class="uiStore.currentTab == 'debug' ? 'active' : ''"
+        >
           <span class="fn-box-icon">
             <Bug />
           </span>
           <span class="fn-box-text">调试</span>
         </div>
 
-        <div class="fn-box" @click="changeTab('setting')"  :class="uiStore.currentTab == 'setting'?'active':''">
+        <div
+          class="fn-box"
+          @click="changeTab('setting')"
+          :class="uiStore.currentTab == 'setting' ? 'active' : ''"
+        >
           <span class="fn-box-icon">
             <ToggleOn />
           </span>
@@ -120,13 +137,13 @@
 </template>
 
 <script setup>
-import { Search, Book, ToggleOn, Toolbox, Bug } from '@vicons/fa';
-import { useDictQueryStore } from '@/store/dict';
-import { useUIStore } from '@/store/ui';
-import { useRouter } from "vue-router";
+import { Search, Book, ToggleOn, Toolbox, Bug } from '@vicons/fa'
+import { useDictQueryStore } from '@/store/dict'
+import { useUIStore } from '@/store/ui'
+import { useRouter } from 'vue-router'
 
-const uiStore = useUIStore();
-const router = useRouter();
+const uiStore = useUIStore()
+const router = useRouter()
 
 ///----------------------------
 // event listener function
@@ -135,15 +152,15 @@ const router = useRouter();
 const tabRouters = {
   search: '/',
   dict: '/dict',
-  plugins:'/plugins',
-  debug:'/debug',
+  plugins: '/plugins',
+  debug: '/debug',
   setting: '/setting',
-};
+}
 
 function changeTab(tabName) {
   if (uiStore.currentTab != tabName && tabRouters[tabName]) {
-    router.replace({ path: tabRouters[tabName] });
+    router.replace({ path: tabRouters[tabName] })
   }
-  uiStore.updateCurrentTab(tabName);
+  uiStore.updateCurrentTab(tabName)
 }
 </script>

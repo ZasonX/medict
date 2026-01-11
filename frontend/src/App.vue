@@ -65,23 +65,23 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, onMounted, onUnmounted } from 'vue';
+import { ref, reactive, onMounted, onUnmounted } from 'vue'
 import {
   NConfigProvider,
   NGlobalStyle,
   NDialogProvider,
   NMessageProvider,
-} from 'naive-ui';
-import { darkTheme as dark, lightTheme as light } from 'naive-ui';
-import { zhCN, dateZhCN } from 'naive-ui';
-import { GlobalThemeOverrides } from 'naive-ui';
-import { useDictQueryStore } from './store/dict';
+} from 'naive-ui'
+import { darkTheme as dark, lightTheme as light } from 'naive-ui'
+import { zhCN, dateZhCN } from 'naive-ui'
+import { GlobalThemeOverrides } from 'naive-ui'
+import { useDictQueryStore } from './store/dict'
 
-let isDark = ref(false);
-let theme = reactive(light);
+let isDark = ref(false)
+let theme = reactive(light)
 
 if (isDark.value) {
-  theme = dark;
+  theme = dark
 }
 
 const themeOverrides: GlobalThemeOverrides = {
@@ -104,20 +104,16 @@ const themeOverrides: GlobalThemeOverrides = {
     borderPressed: 'none',
     borderFocus: 'none',
     borderDisabled: 'none',
-  
   },
   Dialog: {
     // iconColor: string;
     // iconColorInfo: string;
     // iconColorSuccess: "#326cb8",
-    iconSize: "0px",
+    iconSize: '0px',
     // iconColorWarning: string;
     // iconColorError: string;
-  }
-};
-
-
-
+  },
+}
 
 function listenStoreChange(store: any) {
   const unscribe = store.$onAction(
@@ -128,8 +124,10 @@ function listenStoreChange(store: any) {
       after, // 在 action 返回或解决后的钩子
       onError, // action 抛出或拒绝的钩子
     }) => {
-      let startTime = Date.now();
-      console.debug(`[store-action] {${name}} triggered started, args: {${args}}`);
+      let startTime = Date.now()
+      console.debug(
+        `[store-action] {${name}} triggered started, args: {${args}}`
+      )
 
       // 这将在 action 成功并完全运行后触发。
       // 它等待着任何返回的 promise
@@ -138,8 +136,8 @@ function listenStoreChange(store: any) {
           `[store-action] {${name}} triggered success, after ${
             Date.now() - startTime
           }ms, with result ${result}.`
-        );
-      });
+        )
+      })
 
       // 如果 action 抛出或返回一个拒绝的 promise，这将触发
       onError((error) => {
@@ -147,27 +145,23 @@ function listenStoreChange(store: any) {
           `[store-action] {${name}} trigger faild, after ${
             Date.now() - startTime
           }ms.\nerror: ${error}.`
-        );
-      });
+        )
+      })
     }
-  );
-  return unscribe;
+  )
+  return unscribe
 }
 
-let unscribeDictQueryStore = null;
-const dictQueryStore = useDictQueryStore();
-onMounted(()=>{
-  unscribeDictQueryStore = listenStoreChange(dictQueryStore);
-
+let unscribeDictQueryStore = null
+const dictQueryStore = useDictQueryStore()
+onMounted(() => {
+  unscribeDictQueryStore = listenStoreChange(dictQueryStore)
 })
 
-onUnmounted(() =>{
+onUnmounted(() => {
   if (unscribeDictQueryStore) {
-    unscribeDictQueryStore();
-    unscribeDictQueryStore = null;
+    unscribeDictQueryStore()
+    unscribeDictQueryStore = null
   }
 })
-
-
-
 </script>
