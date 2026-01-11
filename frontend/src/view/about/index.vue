@@ -95,7 +95,7 @@
 </template>
 
 <script lang="ts" setup>
-import { BrowserOpenURL } from '../../../wailsjs/runtime/runtime'
+import { BrowserOpenURL } from '$/runtime/runtime'
 import { Code, PeopleCarry } from '@vicons/fa'
 import { NIcon } from 'naive-ui'
 

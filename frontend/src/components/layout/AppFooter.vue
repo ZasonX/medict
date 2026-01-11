@@ -63,7 +63,7 @@
 <script lang="ts" setup>
 import { Bug, Coffee } from '@vicons/fa'
 import { NIcon } from 'naive-ui'
-import { BrowserOpenURL } from '../../../wailsjs/runtime/runtime'
+import { BrowserOpenURL } from '$/runtime/runtime'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()

@@ -21,9 +21,9 @@ import {
   ResourceServerAddr,
   OpenFinder,
   BaseDictDir,
-} from '../../wailsjs/go/main/App'
+} from '$/go/main/App'
 
-import { model } from '../../wailsjs/go/models'
+import { model } from '$/go/models'
 
 function objectToPathParams(obj) {
   const params = []
