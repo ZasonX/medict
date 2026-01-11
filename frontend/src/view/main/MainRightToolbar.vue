@@ -21,6 +21,7 @@
     <div class="dictionaries">
       <n-popover
         v-for="item in state.dictList"
+        :key="item.id"
         :overlap="false"
         placement="left"
         trigger="hover"
