@@ -25,16 +25,6 @@ import {
 
 import { model } from '$/go/models'
 
-function objectToPathParams(obj) {
-  const params = []
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      params.push(`${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)
-    }
-  }
-  return params.join('&')
-}
-
 export const StaticDictServerURL = function (): Promise<string> {
   if (window['go']) {
     return ResourceServerAddr()
