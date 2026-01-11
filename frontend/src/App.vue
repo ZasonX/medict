@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import {
   NConfigProvider,
   NGlobalStyle,
@@ -46,15 +46,11 @@ import {
 } from 'naive-ui'
 import { darkTheme as dark, lightTheme as light } from 'naive-ui'
 import { zhCN, dateZhCN } from 'naive-ui'
-import { GlobalThemeOverrides } from 'naive-ui'
+import type { GlobalThemeOverrides } from 'naive-ui'
 import { useDictQueryStore } from './store/dict'
 
-let isDark = ref(false)
-let theme = reactive(light)
-
-if (isDark.value) {
-  theme = dark
-}
+const isDark = ref(false)
+const theme = computed(() => (isDark.value ? dark : light))
 
 const themeOverrides: GlobalThemeOverrides = {
   common: {
@@ -96,7 +92,7 @@ function listenStoreChange(store: any) {
       after, // 在 action 返回或解决后的钩子
       onError, // action 抛出或拒绝的钩子
     }) => {
-      let startTime = Date.now()
+      const startTime = Date.now()
       console.debug(
         `[store-action] {${name}} triggered started, args: {${args}}`
       )
