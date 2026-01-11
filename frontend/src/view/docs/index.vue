@@ -32,7 +32,7 @@
                 :class="currentMenu === 0 ? 'active' : ''"
                 @click="onClickMenu(0)"
               >
-                <span class="icon icon-window"></span>
+                <span class="icon icon-window" />
                 界面介绍
               </span>
               <span
@@ -40,7 +40,7 @@
                 :class="currentMenu === 1 ? 'active' : ''"
                 @click="onClickMenu(1)"
               >
-                <span class="icon icon-book"></span>
+                <span class="icon icon-book" />
                 词典配置
               </span>
             </div>
@@ -51,7 +51,7 @@
                 :class="currentMenu === 2 ? 'active' : ''"
                 @click="onClickMenu(2)"
               >
-                <span class="icon icon-help-circled"></span>
+                <span class="icon icon-help-circled" />
                 常见问题
               </span>
             </nav>
@@ -61,17 +61,15 @@
           <AppMainContent>
             <div class="docs-container">
               <div class="markdown-body">
-                <router-view></router-view>
+                <router-view />
               </div>
             </div>
           </AppMainContent>
         </div>
-        <div class="x-layout-right-toolbar">
-          <AppRightToolbar></AppRightToolbar>>
-        </div>
+        <div class="x-layout-right-toolbar"><AppRightToolbar />></div>
       </div>
       <div class="n-layout-footer">
-        <AppFooter></AppFooter>
+        <AppFooter />
       </div>
     </div>
   </div>

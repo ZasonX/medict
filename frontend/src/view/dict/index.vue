@@ -46,7 +46,7 @@
                 <nav class="nav-group">
                   <h5 class="nav-group-title">Groups</h5>
                   <span class="nav-group-item">
-                    <span class="icon icon-archive"></span>
+                    <span class="icon icon-archive" />
                     默认组
                   </span>
                   <!-- <span class="nav-group-item">
@@ -66,17 +66,17 @@
               <div class="dict-group-settings">
                 <div class="btn-group">
                   <button class="btn btn-default">
-                    <span class="icon icon-plus"></span>
+                    <span class="icon icon-plus" />
                   </button>
 
                   <button class="btn btn-default">
-                    <span class="icon icon-minus"></span>
+                    <span class="icon icon-minus" />
                   </button>
                   <button class="btn btn-default">
-                    <span class="icon icon-star"></span>
+                    <span class="icon icon-star" />
                   </button>
                   <button class="btn btn-default">
-                    <span class="icon icon-star-empty"></span>
+                    <span class="icon icon-star-empty" />
                   </button>
                 </div>
               </div>

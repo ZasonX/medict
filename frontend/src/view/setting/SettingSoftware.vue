@@ -1,5 +1,5 @@
 <template>
-  <div class="setting-main-container" ref="containerRef">
+  <div ref="containerRef" class="setting-main-container">
     <div class="setting-main-container-header">
       <h3>软件设置</h3>
     </div>

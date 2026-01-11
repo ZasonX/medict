@@ -16,49 +16,18 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<style lang="scss" scoped>
-@import '@/style/variables.scss';
-
-.dictionaries {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  .dictionary-item {
-    margin: 4px 3px;
-    display: block;
-    width: 22px;
-    height: 22px;
-    text-align: center;
-    line-height: 26px;
-    border-radius: 3px;
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
-    // box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    box-shadow:
-      rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
-      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-
-    &:hover {
-      background-color: #f1f1f1;
-    }
-  }
-  .dictionary-item-active {
-  }
-}
-</style>
 <template>
   <div class="dictionaries">
     <span
       v-for="item in state.dictList"
+      :key="item.id"
       class="dictionary-item"
       :class="
         item.id == dictQueryStore.selectDict.id ? 'dictionary-item-active' : ''
       "
-      :key="item.id"
-      @click="chooseDict(item)"
       :style="getBackground(item)"
-    ></span>
+      @click="chooseDict(item)"
+    />
   </div>
 </template>
 <script setup>
@@ -169,3 +138,34 @@ onMounted(() => {
   })
 })
 </script>
+<style lang="scss" scoped>
+@import '@/style/variables.scss';
+
+.dictionaries {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  .dictionary-item {
+    margin: 4px 3px;
+    display: block;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 26px;
+    border-radius: 3px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    // box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    box-shadow:
+      rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  }
+  .dictionary-item-active {
+  }
+}
+</style>

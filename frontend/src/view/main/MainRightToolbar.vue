@@ -16,49 +16,6 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<style lang="scss" scoped>
-@import '@/style/variables.scss';
-
-.dictionaries {
-  display: flex;
-  flex-direction: column;
-  width: 60px;
-  height: 100%;
-
-  .dictionary-item {
-    display: block;
-    width: 32px;
-    height: 32px;
-    text-align: center;
-    line-height: 32px;
-    margin: 6px auto;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 13px;
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
-    // box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    box-shadow:
-      rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
-      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-
-    &:hover {
-      background-color: #f1f1f1;
-    }
-  }
-  .dictionary-item-active {
-    border: 1px solid rgba(17, 168, 255, 0.858);
-    width: 36px;
-    height: 36px;
-    line-height: 36px;
-    padding: 2px;
-    box-shadow:
-      rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
-      rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-  }
-}
-</style>
 <template>
   <AppRightToolbar>
     <div class="dictionaries">
@@ -70,16 +27,16 @@
       >
         <template #trigger>
           <span
+            :key="item.id"
             class="dictionary-item"
             :class="
               item.id == dictQueryStore.selectDict.id
                 ? 'dictionary-item-active'
                 : ''
             "
-            :key="item.id"
-            @click="chooseDict(item)"
             :style="getBackground(item)"
-          ></span>
+            @click="chooseDict(item)"
+          />
         </template>
         <div class="large-text">
           <div>
@@ -205,3 +162,46 @@ onMounted(() => {
   })
 })
 </script>
+<style lang="scss" scoped>
+@import '@/style/variables.scss';
+
+.dictionaries {
+  display: flex;
+  flex-direction: column;
+  width: 60px;
+  height: 100%;
+
+  .dictionary-item {
+    display: block;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    margin: 6px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    // box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    box-shadow:
+      rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  }
+  .dictionary-item-active {
+    border: 1px solid rgba(17, 168, 255, 0.858);
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    padding: 2px;
+    box-shadow:
+      rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+      rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  }
+}
+</style>

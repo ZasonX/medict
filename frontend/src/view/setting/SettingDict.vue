@@ -1,5 +1,5 @@
 <template>
-  <div class="setting-main-container" ref="containerRef">
+  <div ref="containerRef" class="setting-main-container">
     <div class="setting-main-container-header">
       <h3>词典设置</h3>
     </div>
@@ -44,7 +44,7 @@
           <div class="setting-content-inner">
             <pre>
               <code>
-                  {{  presetContent }}
+                  {{ presetContent }}
               </code>
             </pre>
           </div>

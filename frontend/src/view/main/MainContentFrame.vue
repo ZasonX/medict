@@ -16,56 +16,6 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<style lang="scss" scoped>
-@import '@/style/variables.scss';
-@import '@/style/photon/photon.scss';
-
-.app-content-main {
-  width: 100%;
-  height: calc(100% - $layout-header-height);
-  .app-content-main-toolbar {
-    height: 30px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    box-shadow: inset 0 calc(max(1px, 0.0625rem) * -1) #d0d7de;
-    background-color: #f6f8fa;
-    .toolbar-dicts {
-      width: calc(100% - 30px);
-    }
-
-    .toolbar-boxes {
-      display: flex;
-      .app-content-main-toolbar-box {
-        display: block;
-        height: 24px;
-        width: 24px;
-        border: 1px solid #d1d7dd;
-        font-size: 16px;
-        text-align: center;
-        line-height: 24px;
-        margin-left: 3px;
-        margin-right: 3px;
-        margin-top: 2px;
-        border-radius: 3px;
-        background-color: #f6f8fa;
-        color: #596059;
-        svg {
-          cursor: pointer;
-        }
-      }
-    }
-  }
-  #app-content-main-iframe-wrapper {
-    height: calc(100% - 80px);
-    padding: 8px 4px;
-    .app-content-main-iframe {
-      width: 100%;
-      height: 100%;
-    }
-  }
-}
-</style>
 <template>
   <div class="app-content-main">
     <div class="app-content-main-toolbar">
@@ -91,10 +41,9 @@
         ></span>
       </div>
     </div>
-    <div id="app-content-main-iframe-wrapper"></div>
+    <div id="app-content-main-iframe-wrapper" />
   </div>
 </template>
-
 <script lang="ts" setup>
 import { onMounted, onUnmounted } from 'vue'
 import { useDictQueryStore } from '@/store/dict'
@@ -295,3 +244,54 @@ function b64DecodeUnicode(str) {
   )
 }
 </script>
+
+<style lang="scss" scoped>
+@import '@/style/variables.scss';
+@import '@/style/photon/photon.scss';
+
+.app-content-main {
+  width: 100%;
+  height: calc(100% - $layout-header-height);
+  .app-content-main-toolbar {
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: inset 0 calc(max(1px, 0.0625rem) * -1) #d0d7de;
+    background-color: #f6f8fa;
+    .toolbar-dicts {
+      width: calc(100% - 30px);
+    }
+
+    .toolbar-boxes {
+      display: flex;
+      .app-content-main-toolbar-box {
+        display: block;
+        height: 24px;
+        width: 24px;
+        border: 1px solid #d1d7dd;
+        font-size: 16px;
+        text-align: center;
+        line-height: 24px;
+        margin-left: 3px;
+        margin-right: 3px;
+        margin-top: 2px;
+        border-radius: 3px;
+        background-color: #f6f8fa;
+        color: #596059;
+        svg {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  #app-content-main-iframe-wrapper {
+    height: calc(100% - 80px);
+    padding: 8px 4px;
+    .app-content-main-iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+</style>

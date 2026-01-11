@@ -8,8 +8,8 @@
         <n-gi :span="2">
           <n-input-group>
             <n-input
-              :style="{ width: '70%' }"
               v-model:value="resourceInputValue"
+              :style="{ width: '70%' }"
             />
             <n-button type="primary" ghost @click="searchResource">
               搜索
@@ -30,20 +30,6 @@
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.container {
-  padding: 10px;
-  .toolbar {
-    margin-bottom: 10px;
-  }
-  .content {
-    display: flex;
-    width: 100%;
-    min-height: 120px;
-  }
-}
-</style>
 
 <script lang="ts" setup>
 import { defineComponent, ref, reactive, onMounted, computed } from 'vue'
@@ -137,3 +123,17 @@ onMounted(() => {
   })
 })
 </script>
+
+<style lang="scss" scoped>
+.container {
+  padding: 10px;
+  .toolbar {
+    margin-bottom: 10px;
+  }
+  .content {
+    display: flex;
+    width: 100%;
+    min-height: 120px;
+  }
+}
+</style>

@@ -29,7 +29,7 @@
           <MainSidebar />
         </div>
         <div class="x-layout-content">
-          <div class="app-content" id="app-content">
+          <div id="app-content" class="app-content">
             <div class="app-content-main">
               <MainContentFrame />
             </div>

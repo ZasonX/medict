@@ -17,24 +17,24 @@
 -->
 
 <template>
-  <div class="app-footer" id="app-footer">
+  <div id="app-footer" class="app-footer">
     <span class="hyperlink">
       <b
         data-href="https://github.com/terasum/medict"
         @click="onClickHyperLink"
       >
-        <span class="icon icon-github"></span>
+        <span class="icon icon-github" />
         Github</b
       >
     </span>
 
-    <span class="split-line"></span>
+    <span class="split-line" />
     <span class="hyperlink">
       <b
         data-href="https://github.com/terasum/medict/issues"
         @click="onClickHyperLink"
       >
-        <span class="icon icon-help-circled"></span>
+        <span class="icon icon-help-circled" />
         问题反馈</b
       >
     </span>
@@ -54,9 +54,9 @@
       </b>
     </span> -->
 
-    <span class="split-line"></span>
+    <span class="split-line" />
 
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

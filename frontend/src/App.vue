@@ -16,37 +16,9 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<style lang="scss">
-@import './style/variables.scss';
-
-#app-root {
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  display: block;
-  overflow: hidden;
-
-  .fake-title-bar {
-    width: 100%;
-    height: $fake-title-bar-height;
-    display: block;
-    --wails-draggable: drag;
-    background: transparent;
-    // background-color: #fafafa;
-
-    background-color: $theme-top-header-background-color;
-  }
-  .x-space-provider {
-    width: 100%;
-    height: calc(100% - $fake-title-bar-height);
-  }
-}
-</style>
-
 <template>
   <div id="app-root" class="app-container">
-    <div class="fake-title-bar" data-wails-drag></div>
+    <div class="fake-title-bar" data-wails-drag />
     <n-config-provider
       :theme="theme"
       :locale="zhCN"
@@ -56,7 +28,7 @@
     >
       <n-dialog-provider>
         <n-message-provider>
-          <router-view></router-view>
+          <router-view />
         </n-message-provider>
       </n-dialog-provider>
       <n-global-style />
@@ -165,3 +137,31 @@ onUnmounted(() => {
   }
 })
 </script>
+
+<style lang="scss">
+@import './style/variables.scss';
+
+#app-root {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: block;
+  overflow: hidden;
+
+  .fake-title-bar {
+    width: 100%;
+    height: $fake-title-bar-height;
+    display: block;
+    --wails-draggable: drag;
+    background: transparent;
+    // background-color: #fafafa;
+
+    background-color: $theme-top-header-background-color;
+  }
+  .x-space-provider {
+    width: 100%;
+    height: calc(100% - $fake-title-bar-height);
+  }
+}
+</style>

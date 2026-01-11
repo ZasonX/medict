@@ -33,12 +33,12 @@
                     to="/debug/resource-search"
                     class="nav-group-item"
                   >
-                    <span class="icon icon-search"></span>
+                    <span class="icon icon-search" />
                     资源查询
                   </router-link>
 
                   <router-link to="/debug/edit-dict" class="nav-group-item">
-                    <span class="icon icon-pencil"></span>
+                    <span class="icon icon-pencil" />
                     词条修改
                   </router-link>
                 </nav>

@@ -25,7 +25,7 @@ export const GetDictCover = async function (
   cover_name: string
 ): Promise<model.Resp> {
   try {
-    let resp = await requestBackend('GetDictCover', { dict_id, cover_name })
+    const resp = await requestBackend('GetDictCover', { dict_id, cover_name })
     console.log('[dicts-api] GetDictCover: ', resp)
     return resp.data as unknown as model.Resp
   } catch (error) {
@@ -36,7 +36,7 @@ export const GetDictCover = async function (
 
 export const InitDicts = async function (): Promise<model.Resp> {
   try {
-    let resp = await requestBackend('InitDicts', {})
+    const resp = await requestBackend('InitDicts', {})
     console.log('[dicts-api] InitDicts: ', resp)
     return resp.data as unknown as model.Resp
   } catch (error) {
@@ -47,7 +47,7 @@ export const InitDicts = async function (): Promise<model.Resp> {
 
 export const GetAllDicts = async function (): Promise<Array<IDict>> {
   try {
-    let resp = await requestBackend('GetAllDicts', {})
+    const resp = await requestBackend('GetAllDicts', {})
     console.log('[dicts-api] GetAllDicts: ', resp)
     return resp.data as unknown as Array<IDict>
   } catch (error) {
@@ -59,7 +59,7 @@ export const GetAllDicts = async function (): Promise<Array<IDict>> {
 // BuildIndex
 export const BuildIndex = async function (dictid: string): Promise<model.Resp> {
   try {
-    let resp = await requestBackend('BuildIndexByDictId', { dictid: dictid })
+    const resp = await requestBackend('BuildIndexByDictId', { dictid: dictid })
     console.log('[dicts-api] BuildIndex: ', resp)
     return resp.data as unknown as model.Resp
   } catch (error) {
@@ -73,7 +73,7 @@ export const LookupWord = async function (
   word: string
 ): Promise<model.Resp> {
   try {
-    let resp = await requestBackend('LookupWord', {
+    const resp = await requestBackend('LookupWord', {
       dict_id: dictid,
       word: word,
     })
@@ -90,7 +90,7 @@ export const SearchWord = async function (
   word: string
 ): Promise<model.Resp> {
   try {
-    let resp = await requestBackend('SearchWord', {
+    const resp = await requestBackend('SearchWord', {
       dict_id: dictid,
       word: word,
     })
@@ -107,7 +107,7 @@ export const LocateWord = async function (
   keyBlockEntry: model.KeyBlockEntry
 ): Promise<model.Resp> {
   try {
-    let resp = await requestBackend('LocateWord', {
+    const resp = await requestBackend('LocateWord', {
       dict_id: dictid,
       key_block_entry: keyBlockEntry,
     })

@@ -16,55 +16,21 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<style lang="scss" scoped>
-@import '@/style/variables.scss';
-
-.sidebar-content {
-  padding: 4px 2px;
-  margin: 2px 0 0 0;
-  user-select: none;
-  height: calc(100% - $layout-sidebar-logo-height - $layout-footer-height);
-  ul {
-    height: 100%;
-    overflow-y: scroll;
-    list-style: none;
-    margin: 0;
-    padding: 0 0 0 6px;
-    li {
-      margin: 0 4px 0 4px;
-      padding: 0 0px 0 6px;
-      border-bottom: 1px solid #f1f1f1;
-      border-radius: 3px;
-      user-select: none;
-      font-size: 16px;
-      -webkit-user-select: none;
-      &:hover {
-        background-color: #f1f1f1;
-        cursor: pointer;
-      }
-    }
-    .active {
-      background-color: #f2f2f2;
-    }
-  }
-}
-</style>
 <template>
   <AppSidebar>
     <ul id="word-pending-list">
       <li
         v-for="item in dictQueryStore.queryPendingList"
-        :data-id="item.id"
         :key="item.id"
-        @click="selectItem(item.id)"
+        :data-id="item.id"
         :class="selected_id == item.id ? 'active' : ''"
+        @click="selectItem(item.id)"
       >
         <span>{{ item.keyword }}</span>
       </li>
     </ul>
   </AppSidebar>
 </template>
-
 <script setup>
 import AppSidebar from '@/components/layout/AppSidebar.vue'
 
@@ -99,3 +65,37 @@ onMounted(() => {
   })
 })
 </script>
+
+<style lang="scss" scoped>
+@import '@/style/variables.scss';
+
+.sidebar-content {
+  padding: 4px 2px;
+  margin: 2px 0 0 0;
+  user-select: none;
+  height: calc(100% - $layout-sidebar-logo-height - $layout-footer-height);
+  ul {
+    height: 100%;
+    overflow-y: scroll;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 6px;
+    li {
+      margin: 0 4px 0 4px;
+      padding: 0 0px 0 6px;
+      border-bottom: 1px solid #f1f1f1;
+      border-radius: 3px;
+      user-select: none;
+      font-size: 16px;
+      -webkit-user-select: none;
+      &:hover {
+        background-color: #f1f1f1;
+        cursor: pointer;
+      }
+    }
+    .active {
+      background-color: #f2f2f2;
+    }
+  }
+}
+</style>

@@ -17,7 +17,7 @@
 -->
 
 <template>
-  <div class="lazy-iframe"></div>
+  <div class="lazy-iframe" />
 </template>
 
 <script>
@@ -32,7 +32,7 @@ function generateGuid() {
 }
 
 export default defineComponent({
-  name: 'lazy-iframe',
+  name: 'LazyIframe',
   props: {
     src: {
       type: String,

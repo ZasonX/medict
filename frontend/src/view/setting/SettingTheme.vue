@@ -1,11 +1,11 @@
 <template>
-  <div class="setting-main-container" ref="containerRef">
+  <div ref="containerRef" class="setting-main-container">
     <div class="setting-main-container-header">
       <h3>主题设置</h3>
     </div>
 
     <div class="setting-main-container-content">
-      <n-card class="setting-section"> </n-card>
+      <n-card class="setting-section" />
     </div>
   </div>
 </template>

@@ -51,63 +51,63 @@
                     class="nav-group-item"
                     @click="changeTab('/setting/dict')"
                   >
-                    <span class="icon icon-book"></span>
+                    <span class="icon icon-book" />
                     <a> 词典设置 </a>
                   </span>
                   <span
                     class="nav-group-item"
                     @click="changeTab('/setting/software')"
                   >
-                    <span class="icon icon-cog"></span>
+                    <span class="icon icon-cog" />
                     <a> 软件设置 </a>
                   </span>
                   <span
                     class="nav-group-item"
                     @click="changeTab('/setting/theme')"
                   >
-                    <span class="icon icon-palette"></span>
+                    <span class="icon icon-palette" />
                     <a> 主题设置 </a>
                   </span>
                   <span
                     class="nav-group-item"
                     @click="changeTab('/setting/plugin')"
                   >
-                    <span class="icon icon-rocket"></span>
+                    <span class="icon icon-rocket" />
                     <a> 插件设置</a>
                   </span>
                 </nav>
                 <nav class="nav-group">
                   <h5 class="nav-group-title">关于信息</h5>
                   <span class="nav-group-item" @click="changeTab('/docs')">
-                    <span class="icon icon-help-circled"></span>
+                    <span class="icon icon-help-circled" />
                     <a> 使用说明</a>
                   </span>
                   <span
                     class="nav-group-item"
                     @click="changeTab('/setting/terms')"
                   >
-                    <span class="icon icon-feather"></span>
+                    <span class="icon icon-feather" />
                     <a> 隐私声明</a>
                   </span>
                   <span
                     class="nav-group-item"
                     @click="changeTab('/setting/about')"
                   >
-                    <span class="icon icon-info-circled"></span>
+                    <span class="icon icon-info-circled" />
                     <a> 关于信息</a>
                   </span>
                   <span
                     class="nav-group-item"
                     @click="changeTab('/setting/update')"
                   >
-                    <span class="icon icon-arrows-ccw"></span>
+                    <span class="icon icon-arrows-ccw" />
                     <a> 版本更新</a>
                   </span>
                   <span
                     class="nav-group-item"
                     @click="changeTab('/setting/license')"
                   >
-                    <span class="icon icon-cc"></span>
+                    <span class="icon icon-cc" />
                     <a> 开源协议</a>
                   </span>
                 </nav>
@@ -117,12 +117,12 @@
         </div>
         <div class="x-layout-content">
           <AppMainContent>
-            <router-view></router-view>
+            <router-view />
           </AppMainContent>
         </div>
       </div>
       <div class="n-layout-footer">
-        <AppFooter> </AppFooter>
+        <AppFooter />
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="setting-main-container" ref="containerRef">
+  <div ref="containerRef" class="setting-main-container">
     <div class="setting-main-container-header">
       <h3>插件设置</h3>
     </div>
@@ -22,17 +22,23 @@
             </thead>
             <tbody>
               <tr>
-                <td><input width="20" type="checkbox" /></td>
+                <td>
+                  <input width="20" type="checkbox" />
+                </td>
                 <td width="20">1</td>
                 <td>localhost</td>
               </tr>
               <tr>
-                <td><input width="20" type="checkbox" /></td>
+                <td>
+                  <input width="20" type="checkbox" />
+                </td>
                 <td width="20">1</td>
                 <td>localhost</td>
               </tr>
               <tr>
-                <td><input width="20" type="checkbox" /></td>
+                <td>
+                  <input width="20" type="checkbox" />
+                </td>
                 <td width="20">1</td>
                 <td>localhost</td>
               </tr>

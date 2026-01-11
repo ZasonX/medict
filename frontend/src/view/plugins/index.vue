@@ -46,42 +46,42 @@
                 <nav class="nav-group">
                   <h5 class="nav-group-title">前端插件</h5>
                   <span class="nav-group-item">
-                    <span class="icon icon-publish"></span>
+                    <span class="icon icon-publish" />
                     JQuery
                   </span>
                   <span class="nav-group-item">
-                    <span class="icon icon-publish"></span>
+                    <span class="icon icon-publish" />
                     Highlight
                   </span>
                   <span class="nav-group-item">
-                    <span class="icon icon-publish"></span>
+                    <span class="icon icon-publish" />
                     Underline
                   </span>
                   <span class="nav-group-item">
-                    <span class="icon icon-publish"></span>
+                    <span class="icon icon-publish" />
                     RememberBookFront
                   </span>
                   <span class="nav-group-item">
-                    <span class="icon icon-publish"></span>
+                    <span class="icon icon-publish" />
                     SendToAnkiFront
                   </span>
                 </nav>
                 <nav class="nav-group">
                   <h5 class="nav-group-title">后端插件</h5>
                   <span class="nav-group-item">
-                    <span class="icon icon-rocket"></span>
+                    <span class="icon icon-rocket" />
                     EntryJump
                   </span>
                   <span class="nav-group-item">
-                    <span class="icon icon-rocket"></span>
+                    <span class="icon icon-rocket" />
                     FontReplace
                   </span>
                   <span class="nav-group-item">
-                    <span class="icon icon-rocket"></span>
+                    <span class="icon icon-rocket" />
                     RememberBook
                   </span>
                   <span class="nav-group-item">
-                    <span class="icon icon-rocket"></span>
+                    <span class="icon icon-rocket" />
                     SendToAnki
                   </span>
                 </nav>
@@ -89,17 +89,17 @@
               <div class="dict-group-settings">
                 <div class="btn-group">
                   <button class="btn btn-default">
-                    <span class="icon icon-plus"></span>
+                    <span class="icon icon-plus" />
                   </button>
 
                   <button class="btn btn-default">
-                    <span class="icon icon-minus"></span>
+                    <span class="icon icon-minus" />
                   </button>
                   <button class="btn btn-default">
-                    <span class="icon icon-star"></span>
+                    <span class="icon icon-star" />
                   </button>
                   <button class="btn btn-default">
-                    <span class="icon icon-star-empty"></span>
+                    <span class="icon icon-star-empty" />
                   </button>
                 </div>
               </div>

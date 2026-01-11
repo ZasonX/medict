@@ -17,7 +17,7 @@
 -->
 
 <template>
-  <div class="app-header" id="app-header">
+  <div id="app-header" class="app-header">
     <div class="app-header-logo">
       <div class="logo">
         <h1>Medict</h1>
@@ -25,7 +25,7 @@
     </div>
     <div class="app-header-func-box">
       <div class="app-header-func-solt">
-        <slot></slot>
+        <slot />
       </div>
 
       <div class="app-header-func-nav">

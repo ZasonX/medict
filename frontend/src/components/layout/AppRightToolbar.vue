@@ -16,6 +16,15 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
+<template>
+  <div id="app-right-toolbar" class="app-right-toolbar">
+    <div class="toolbar-content">
+      <slot />
+    </div>
+  </div>
+</template>
+<script setup></script>
+
 <style lang="scss" scoped>
 @import '@/style/variables.scss';
 
@@ -35,12 +44,3 @@
   }
 }
 </style>
-<template>
-  <div id="app-right-toolbar" class="app-right-toolbar">
-    <div class="toolbar-content">
-      <slot></slot>
-    </div>
-  </div>
-</template>
-
-<script setup></script>

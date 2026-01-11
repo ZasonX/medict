@@ -1,5 +1,5 @@
 <template>
-  <div class="setting-main-container" ref="containerRef">
+  <div ref="containerRef" class="setting-main-container">
     <div class="setting-main-container-header">
       <h3>检查更新</h3>
     </div>
@@ -7,7 +7,7 @@
     <div class="setting-main-container-content">
       <n-card class="setting-section">
         <SettingItem title="最新版本">
-          <template #desc> </template>
+          <template #desc />
           <template #action>
             <button class="btn btn-default" @click="checkLatestVersion">
               检查新版本

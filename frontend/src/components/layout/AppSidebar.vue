@@ -16,6 +16,15 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
+<template>
+  <div id="app-sidebar" class="app-sidebar">
+    <div class="sidebar-content">
+      <slot />
+    </div>
+  </div>
+</template>
+<script setup></script>
+
 <style lang="scss" scoped>
 @import '@/style/variables.scss';
 
@@ -64,12 +73,3 @@
   }
 }
 </style>
-<template>
-  <div id="app-sidebar" class="app-sidebar">
-    <div class="sidebar-content">
-      <slot></slot>
-    </div>
-  </div>
-</template>
-
-<script setup></script>

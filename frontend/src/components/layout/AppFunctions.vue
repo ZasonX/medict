@@ -1,3 +1,94 @@
+<template>
+  <div class="app-content-functions">
+    <div class="header">
+      <div class="header-nav-functions">
+        <div
+          class="fn-box"
+          :class="uiStore.currentTab == 'search' ? 'active' : ''"
+          @click="changeTab('search')"
+        >
+          <span class="fn-box-icon">
+            <Search />
+          </span>
+          <span class="fn-box-text">搜索</span>
+        </div>
+
+        <div
+          class="fn-box"
+          :class="uiStore.currentTab == 'dict' ? 'active' : ''"
+          @click="changeTab('dict')"
+        >
+          <span class="fn-box-icon">
+            <Book />
+          </span>
+          <span class="fn-box-text">词典</span>
+        </div>
+
+        <div
+          class="fn-box"
+          :class="uiStore.currentTab == 'plugins' ? 'active' : ''"
+          @click="changeTab('plugins')"
+        >
+          <span class="fn-box-icon">
+            <Toolbox />
+          </span>
+          <span class="fn-box-text">插件</span>
+        </div>
+
+        <div
+          class="fn-box"
+          :class="uiStore.currentTab == 'debug' ? 'active' : ''"
+          @click="changeTab('debug')"
+        >
+          <span class="fn-box-icon">
+            <Bug />
+          </span>
+          <span class="fn-box-text">调试</span>
+        </div>
+
+        <div
+          class="fn-box"
+          :class="uiStore.currentTab == 'setting' ? 'active' : ''"
+          @click="changeTab('setting')"
+        >
+          <span class="fn-box-icon">
+            <ToggleOn />
+          </span>
+          <span class="fn-box-text">设置</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script setup>
+import { Search, Book, ToggleOn, Toolbox, Bug } from '@vicons/fa'
+import { useDictQueryStore } from '@/store/dict'
+import { useUIStore } from '@/store/ui'
+import { useRouter } from 'vue-router'
+
+const uiStore = useUIStore()
+const router = useRouter()
+
+///----------------------------
+// event listener function
+///----------------------------
+
+const tabRouters = {
+  search: '/',
+  dict: '/dict',
+  plugins: '/plugins',
+  debug: '/debug',
+  setting: '/setting',
+}
+
+function changeTab(tabName) {
+  if (uiStore.currentTab != tabName && tabRouters[tabName]) {
+    router.replace({ path: tabRouters[tabName] })
+  }
+  uiStore.updateCurrentTab(tabName)
+}
+</script>
+
 <style lang="scss">
 @import '@/style/variables.scss';
 
@@ -73,94 +164,3 @@
   }
 }
 </style>
-<template>
-  <div class="app-content-functions">
-    <div class="header">
-      <div class="header-nav-functions">
-        <div
-          class="fn-box"
-          @click="changeTab('search')"
-          :class="uiStore.currentTab == 'search' ? 'active' : ''"
-        >
-          <span class="fn-box-icon">
-            <Search />
-          </span>
-          <span class="fn-box-text">搜索</span>
-        </div>
-
-        <div
-          class="fn-box"
-          @click="changeTab('dict')"
-          :class="uiStore.currentTab == 'dict' ? 'active' : ''"
-        >
-          <span class="fn-box-icon">
-            <Book />
-          </span>
-          <span class="fn-box-text">词典</span>
-        </div>
-
-        <div
-          class="fn-box"
-          @click="changeTab('plugins')"
-          :class="uiStore.currentTab == 'plugins' ? 'active' : ''"
-        >
-          <span class="fn-box-icon">
-            <Toolbox />
-          </span>
-          <span class="fn-box-text">插件</span>
-        </div>
-
-        <div
-          class="fn-box"
-          @click="changeTab('debug')"
-          :class="uiStore.currentTab == 'debug' ? 'active' : ''"
-        >
-          <span class="fn-box-icon">
-            <Bug />
-          </span>
-          <span class="fn-box-text">调试</span>
-        </div>
-
-        <div
-          class="fn-box"
-          @click="changeTab('setting')"
-          :class="uiStore.currentTab == 'setting' ? 'active' : ''"
-        >
-          <span class="fn-box-icon">
-            <ToggleOn />
-          </span>
-          <span class="fn-box-text">设置</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
-<script setup>
-import { Search, Book, ToggleOn, Toolbox, Bug } from '@vicons/fa'
-import { useDictQueryStore } from '@/store/dict'
-import { useUIStore } from '@/store/ui'
-import { useRouter } from 'vue-router'
-
-const uiStore = useUIStore()
-const router = useRouter()
-
-///----------------------------
-// event listener function
-///----------------------------
-
-const tabRouters = {
-  search: '/',
-  dict: '/dict',
-  plugins: '/plugins',
-  debug: '/debug',
-  setting: '/setting',
-}
-
-function changeTab(tabName) {
-  if (uiStore.currentTab != tabName && tabRouters[tabName]) {
-    router.replace({ path: tabRouters[tabName] })
-  }
-  uiStore.updateCurrentTab(tabName)
-}
-</script>

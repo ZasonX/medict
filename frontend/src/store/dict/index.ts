@@ -22,7 +22,7 @@ import { InitDicts, GetAllDicts, SearchWord } from '@/apis/dicts-api'
 import { StaticDictServerURL } from '@/apis/apis'
 
 function constructQueryURL(entry) {
-  let {
+  const {
     baseurl,
     dict_id,
     keyword,
@@ -194,10 +194,10 @@ export const useDictQueryStore = defineStore('dictQuery', {
       this.updateMainContent(this.selectDict.description.description)
     },
     setUpAPIBaseURL() {
-      let count = 0
-      let that = this
-      let inv = setInterval(function () {
-        let urlPromise = StaticDictServerURL()
+      const count = 0
+      const that = this
+      const inv = setInterval(function () {
+        const urlPromise = StaticDictServerURL()
 
         if (!urlPromise) {
           clearInterval(inv)
@@ -247,7 +247,7 @@ export const useDictQueryStore = defineStore('dictQuery', {
         return
       }
 
-      let entry = this.queryPendingList[entry_idx]
+      const entry = this.queryPendingList[entry_idx]
 
       this.updateInputSearchWord(entry.keyword)
 
@@ -275,7 +275,7 @@ export const useDictQueryStore = defineStore('dictQuery', {
     },
     _locateWord(locateQuerier) {
       console.log('frontend _locateWord', locateQuerier)
-      let definitionURL = constructQueryURL(locateQuerier)
+      const definitionURL = constructQueryURL(locateQuerier)
       this.updateMainContentURL(definitionURL)
     },
     resetMainContent() {
@@ -317,7 +317,7 @@ export const useDictQueryStore = defineStore('dictQuery', {
       this.pushHistory(locateQuerier)
     },
     backHistory() {
-      let locateQuerier = this.historyStack.back()
+      const locateQuerier = this.historyStack.back()
       if (this.inputSearchWord == locateQuerier.keyword) {
         return
       }
@@ -343,7 +343,7 @@ export const useDictQueryStore = defineStore('dictQuery', {
     },
 
     forwardHistory() {
-      let locateQuerier = this.historyStack.forward()
+      const locateQuerier = this.historyStack.forward()
       if (this.inputSearchWord == locateQuerier.key_word) {
         return
       }
